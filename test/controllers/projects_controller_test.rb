@@ -3,6 +3,7 @@ require "test_helper"
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @project = projects(:one)
+    @new_project = Project.new(name: "newproject", space_name: "newproject")
   end
 
   test "should get index" do
@@ -17,7 +18,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create project" do
     assert_difference("Project.count") do
-      post projects_url, params: { project: { name: @project.name, space_name: @project.space_name, url_preffix: @project.url_preffix } }
+      post projects_url, params: { project: { name: @new_project.name, space_name: @new_project.space_name, url_preffix: @project.url_preffix } }
     end
 
     assert_redirected_to project_url(Project.last)

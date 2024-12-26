@@ -7,14 +7,14 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Endpoints</h1>
-    <%= link_to "New endpoint", new_endpoint_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%= link_to "New endpoint", new_project_endpoint_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="endpoints" class="min-w-full">
     <% @endpoints.each do |endpoint| %>
       <%= render endpoint %>
       <p>
-        <%= link_to "Show this endpoint", endpoint, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Show this endpoint", project_endpoint_path(project_id: endpoint.project_id, id: endpoint.id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       </p>
     <% end %>
   </div>

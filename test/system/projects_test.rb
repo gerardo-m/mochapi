@@ -3,6 +3,7 @@ require "application_system_test_case"
 class ProjectsTest < ApplicationSystemTestCase
   setup do
     @project = projects(:one)
+    @new_project = Project.new(name: "newproject", space_name: "newproject")
   end
 
   test "visiting the index" do
@@ -14,9 +15,9 @@ class ProjectsTest < ApplicationSystemTestCase
     visit projects_url
     click_on "New project"
 
-    fill_in "Name", with: @project.name
-    fill_in "Space name", with: @project.space_name
-    fill_in "Url preffix", with: @project.url_preffix
+    fill_in "Name", with: @new_project.name
+    fill_in "Space name", with: @new_project.space_name
+    fill_in "Url preffix", with: @new_project.url_preffix
     click_on "Create Project"
 
     assert_text "Project was successfully created"

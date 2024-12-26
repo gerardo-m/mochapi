@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  resources :endpoints
-  resources :projects
+  resources :projects do
+    resources :endpoints
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   namespace :api do
-    get "*apiurl", to: "calls#get"
+    get ":project/*apiurl", to: "calls#get"
+    post ":project/*apiurl", to: "calls#post"
+    put ":project/*apiurl", to: "calls#put"
+    patch ":project/*apiurl", to: "calls#patch"
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

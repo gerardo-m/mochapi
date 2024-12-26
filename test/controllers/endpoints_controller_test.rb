@@ -6,43 +6,43 @@ class EndpointsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get endpoints_url
+    get project_endpoints_url(project_id: @endpoint.project_id)
     assert_response :success
   end
 
   test "should get new" do
-    get new_endpoint_url
+    get new_project_endpoint_url(project_id: @endpoint.project_id)
     assert_response :success
   end
 
   test "should create endpoint" do
     assert_difference("Endpoint.count") do
-      post endpoints_url, params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, url: @endpoint.url } }
+      post project_endpoints_url(project_id: @endpoint.project_id), params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, url: @endpoint.url } }
     end
 
-    assert_redirected_to endpoint_url(Endpoint.last)
+    assert_redirected_to project_endpoint_url(Endpoint.last, project_id: @endpoint.project_id)
   end
 
   test "should show endpoint" do
-    get endpoint_url(@endpoint)
+    get project_endpoint_url(@endpoint, project_id: @endpoint.project_id)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_endpoint_url(@endpoint)
+    get edit_project_endpoint_url(@endpoint, project_id: @endpoint.project_id)
     assert_response :success
   end
 
   test "should update endpoint" do
-    patch endpoint_url(@endpoint), params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, url: @endpoint.url } }
-    assert_redirected_to endpoint_url(@endpoint)
+    patch project_endpoint_url(@endpoint, project_id: @endpoint.project_id), params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, url: @endpoint.url } }
+    assert_redirected_to project_endpoint_url(@endpoint, project_id: @endpoint.project_id)
   end
 
   test "should destroy endpoint" do
     assert_difference("Endpoint.count", -1) do
-      delete endpoint_url(@endpoint)
+      delete project_endpoint_url(@endpoint, project_id: @endpoint.project_id)
     end
 
-    assert_redirected_to endpoints_url
+    assert_redirected_to project_endpoints_url(project_id: @endpoint.project_id)
   end
 end

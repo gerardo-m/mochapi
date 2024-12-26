@@ -1,11 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  space_name: MyString
-  url_preffix: MyString
+  name: Project1
+  space_name: project1
+  url_preffix: 
 
 two:
-  name: MyString
-  space_name: MyString
-  url_preffix: MyString
+  name: Project 2
+  space_name: project2
+  url_preffix: 
+
+three:
+  name: Project3
+  space_name: project3
+  url_preffix: api/v1

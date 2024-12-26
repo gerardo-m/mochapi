@@ -25,7 +25,7 @@ class EndpointsController < ApplicationController
 
     respond_to do |format|
       if @endpoint.save
-        format.html { redirect_to @endpoint, notice: "Endpoint was successfully created." }
+        format.html { redirect_to project_endpoint_url(id: @endpoint.id), notice: "Endpoint was successfully created." }
         format.json { render :show, status: :created, location: @endpoint }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class EndpointsController < ApplicationController
   def update
     respond_to do |format|
       if @endpoint.update(endpoint_params)
-        format.html { redirect_to @endpoint, notice: "Endpoint was successfully updated." }
+        format.html { redirect_to project_endpoint_url(@endpoint), notice: "Endpoint was successfully updated." }
         format.json { render :show, status: :ok, location: @endpoint }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class EndpointsController < ApplicationController
     @endpoint.destroy!
 
     respond_to do |format|
-      format.html { redirect_to endpoints_path, status: :see_other, notice: "Endpoint was successfully destroyed." }
+      format.html { redirect_to project_endpoints_path, status: :see_other, notice: "Endpoint was successfully destroyed." }
       format.json { head :no_content }
     end
   end
