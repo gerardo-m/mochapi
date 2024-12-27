@@ -13,6 +13,8 @@ class EndpointsController < ApplicationController
   # GET /endpoints/new
   def new
     @endpoint = Endpoint.new
+    @endpoint.response = Response.new responseable: PlainResponse.new
+    @endpoint.project_id = params[:project_id]
   end
 
   # GET /endpoints/1/edit

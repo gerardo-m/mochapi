@@ -15,7 +15,6 @@ class EndpointsTest < ApplicationSystemTestCase
     click_on "New endpoint"
 
     fill_in "Name", with: @endpoint.name
-    fill_in "Project", with: @endpoint.project_id
     fill_in "Url", with: @endpoint.url
     click_on "Create Endpoint"
 
@@ -28,7 +27,6 @@ class EndpointsTest < ApplicationSystemTestCase
     click_on "Edit this endpoint", match: :first
 
     fill_in "Name", with: @endpoint.name
-    fill_in "Project", with: @endpoint.project_id
     fill_in "Url", with: @endpoint.url
     click_on "Update Endpoint"
 

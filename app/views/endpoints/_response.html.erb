@@ -1,0 +1,7 @@
+<h2>Response</h2>
+<%= form.fields_for :plain_response do |rform| %>
+  <div class="my-5">
+    <%= rform.label :content %>
+    <%= rform.text_field :content, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+<%end%>
