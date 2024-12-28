@@ -24,7 +24,7 @@ class EndpointsController < ApplicationController
   # POST /endpoints or /endpoints.json
   def create
     @endpoint = Endpoint.new(endpoint_params)
-
+    @endpoint.response = build_response
     respond_to do |format|
       if @endpoint.save
         format.html { redirect_to project_endpoint_url(id: @endpoint.id), notice: "Endpoint was successfully created." }
@@ -38,6 +38,8 @@ class EndpointsController < ApplicationController
 
   # PATCH/PUT /endpoints/1 or /endpoints/1.json
   def update
+    @endpoint.assign_attributes(endpoint_params)
+    resassign_response
     respond_to do |format|
       if @endpoint.update(endpoint_params)
         format.html { redirect_to project_endpoint_url(@endpoint), notice: "Endpoint was successfully updated." }
@@ -60,13 +62,40 @@ class EndpointsController < ApplicationController
   end
 
   private
+
+    def resassign_response
+      if params[:type]== "PlainResponse"
+        if @endpoint.response.plain_response.nil?
+          @endpoint.response.responseable = PlainResponse.new(response_params)
+        else
+          @endpoint.response.plain_response.assign_attributes(response_params)
+        end
+      end
+    end
+
+    def build_response
+      if params[:type]== "PlainResponse"
+        return Response.new responseable: PlainResponse.new(response_params)
+      end
+      nil
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_endpoint
       @endpoint = Endpoint.find(params.expect(:id))
+      @endpoint.response.plain_response
     end
 
     # Only allow a list of trusted parameters through.
     def endpoint_params
-      params.expect(endpoint: [ :name, :url, :project_id ])
+      params.expect(endpoint: [ :name, :url, :method, :project_id ])
+    end
+
+    def response_params
+      r_params = params[:endpoint][:response_attributes]
+      if params[:type]== "PlainResponse"
+        return r_params.expect(plain_response: [ :content ])
+      end
+      rparams
     end
 end

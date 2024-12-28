@@ -3,6 +3,8 @@ require "test_helper"
 class EndpointsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @endpoint = endpoints(:one)
+    # @endpoint.response = responses(:one)
+    # @endpoint.response.responseable = plain_responses(:one)
   end
 
   test "should get index" do

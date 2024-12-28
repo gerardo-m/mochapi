@@ -16,13 +16,13 @@
 - Add response to endpoint
   - ~~Compact endpoint form~~
   - ~~Add dropdown for response type~~
-  - Create partial for response
-  - Save response along the endpoint
-  - Repeat in the edit/update view
+  - ~~Create partial for response~~
+  - ~~Save response along the endpoint~~
+  - ~~Repeat in the edit/update view~~
 
 - Delegate the request to the response object
-  - Implement the model
-  - Call the method from the controller
+  - ~~Implement the model~~
+  - ~~Call the method from the controller~~
 
 - Handle path parameters
 - Add endpoints list to project

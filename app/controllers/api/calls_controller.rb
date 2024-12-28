@@ -31,8 +31,9 @@ module Api
 
     protected
     def handle_endpoint(endpoint)
-      render json: { message:
-        "Received call to #{endpoint.project.space_name} with the following path: #{endpoint.method} /#{endpoint.url}" }
+      render endpoint.response.solve
+      # render json: { message:
+      #   "Received call to #{endpoint.project.space_name} with the following path: #{endpoint.method} /#{endpoint.url}" }
     end
   end
 end

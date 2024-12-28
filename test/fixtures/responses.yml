@@ -1,8 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   responseable_type: MyString
-#   responseable_id: 1
+one:
+  endpoint: one
+  responseable: one (PlainResponse)
 
 # two:
 #   responseable_type: MyString
