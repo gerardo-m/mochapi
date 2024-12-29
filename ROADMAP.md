@@ -25,4 +25,17 @@
   - ~~Call the method from the controller~~
 
 - Handle path parameters
-- Add endpoints list to project
+  - ~~Parse endpoint path~~
+  - ~~Validate path from request to the saved path~~
+
+- Improve UI
+  - Improve projects pages
+  - Improve endpoints pages
+
+- Write tests
+  - Write model tests
+  - Write controller tests?
+  - Write tests for lib/
+  - Write system tests
+  
+- Release v0.1.0

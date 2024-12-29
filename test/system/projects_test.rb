@@ -21,12 +21,12 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on "Create Project"
 
     assert_text "Project was successfully created"
-    click_on "Back"
+    click_on "Projects"
   end
 
   test "should update Project" do
     visit project_url(@project)
-    click_on "Edit this project", match: :first
+    click_on "Edit details", match: :first
 
     fill_in "Name", with: @project.name
     fill_in "Space name", with: @project.space_name
@@ -34,7 +34,7 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on "Update Project"
 
     assert_text "Project was successfully updated"
-    click_on "Back"
+    click_on "Projects"
   end
 
   test "should destroy Project" do

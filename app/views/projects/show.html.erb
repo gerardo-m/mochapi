@@ -1,15 +1,18 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
+<div class="mx-auto w-full max-w-screen-lg flex">
+  <div class="w-full">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-
+    <div class="flex flex-row text-xl">
+      <%= link_to "Projects", projects_path, class:"font-bold text-blue-600 hover:text-blue-800" %>
+      &nbsp>&nbsp
+      <%= @project.name%>
+    </div>
+    <div class="">
+    </div>
     <%= render @project %>
-
-    <%= link_to "Edit this project", edit_project_path(@project), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to projects", projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to "Destroy this project", @project, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to "Destroy this project", @project, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-red-800 text-white font-medium" %>
     </div>
   </div>
 </div>

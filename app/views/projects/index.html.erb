@@ -10,12 +10,9 @@
     <%= link_to "New project", new_project_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="projects" class="min-w-full">
+  <div id="projects" class="min-w-full flex flex-col py-5 space-y-5">
     <% @projects.each do |project| %>
-      <%= render project %>
-      <p>
-        <%= link_to "Show this project", project, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
+      <%= render "project_item", project: project %>
     <% end %>
   </div>
 </div>

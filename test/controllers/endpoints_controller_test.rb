@@ -19,7 +19,7 @@ class EndpointsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create endpoint" do
     assert_difference("Endpoint.count") do
-      post project_endpoints_url(project_id: @endpoint.project_id), params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, url: @endpoint.url } }
+      post project_endpoints_url(project_id: @endpoint.project_id), params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, path: @endpoint.path } }
     end
 
     assert_redirected_to project_endpoint_url(Endpoint.last, project_id: @endpoint.project_id)
@@ -36,7 +36,7 @@ class EndpointsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update endpoint" do
-    patch project_endpoint_url(@endpoint, project_id: @endpoint.project_id), params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, url: @endpoint.url } }
+    patch project_endpoint_url(@endpoint, project_id: @endpoint.project_id), params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, path: @endpoint.path } }
     assert_redirected_to project_endpoint_url(@endpoint, project_id: @endpoint.project_id)
   end
 

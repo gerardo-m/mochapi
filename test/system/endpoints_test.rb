@@ -15,7 +15,7 @@ class EndpointsTest < ApplicationSystemTestCase
     click_on "New endpoint"
 
     fill_in "Name", with: @endpoint.name
-    fill_in "Url", with: @endpoint.url
+    fill_in "Path", with: @endpoint.path
     click_on "Create Endpoint"
 
     assert_text "Endpoint was successfully created"
@@ -27,7 +27,7 @@ class EndpointsTest < ApplicationSystemTestCase
     click_on "Edit this endpoint", match: :first
 
     fill_in "Name", with: @endpoint.name
-    fill_in "Url", with: @endpoint.url
+    fill_in "Path", with: @endpoint.path
     click_on "Update Endpoint"
 
     assert_text "Endpoint was successfully updated"

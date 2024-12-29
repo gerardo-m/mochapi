@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  url: MyString
+  path: MyString
   project: one
 
 two:
   name: MyString
-  url: MyString
+  path: MyString
   project: two

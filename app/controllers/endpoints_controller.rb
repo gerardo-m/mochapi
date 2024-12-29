@@ -88,7 +88,7 @@ class EndpointsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def endpoint_params
-      params.expect(endpoint: [ :name, :url, :method, :project_id ])
+      params.expect(endpoint: [ :name, :path, :method, :project_id ])
     end
 
     def response_params

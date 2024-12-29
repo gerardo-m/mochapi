@@ -13,7 +13,7 @@
 ActiveRecord::Schema[8.0].define(version: 2024_12_26_024020) do
   create_table "endpoints", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.string "url"
+    t.string "path"
     t.string "method"
     t.bigint "project_id", null: false
     t.datetime "created_at", null: false
