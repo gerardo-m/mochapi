@@ -4,6 +4,10 @@ one:
   endpoint: one
   responseable: one (PlainResponse)
 
+to_destroy:
+  endpoint: to_destroy
+  responseable: one (PlainResponse)
+
 # two:
 #   responseable_type: MyString
 #   responseable_id: 1

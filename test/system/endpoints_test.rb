@@ -19,7 +19,7 @@ class EndpointsTest < ApplicationSystemTestCase
     click_on "Create Endpoint"
 
     assert_text "Endpoint was successfully created"
-    click_on "Back"
+    click_on "Endpoints"
   end
 
   test "should update Endpoint" do
@@ -31,12 +31,12 @@ class EndpointsTest < ApplicationSystemTestCase
     click_on "Update Endpoint"
 
     assert_text "Endpoint was successfully updated"
-    click_on "Back"
+    click_on "Endpoints"
   end
 
   test "should destroy Endpoint" do
     visit project_endpoint_url(@endpoint, project_id: @endpoint.project_id)
-    click_on "Destroy this endpoint", match: :first
+    click_on "Destroy", match: :first
 
     assert_text "Endpoint was successfully destroyed"
   end

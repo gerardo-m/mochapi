@@ -3,16 +3,15 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-    <div class="flex flex-row text-xl">
-      <%= link_to "Projects", projects_path, class:"font-bold text-blue-600 hover:text-blue-800" %>
-      &nbsp>&nbsp
-      <%= @project.name%>
-    </div>
     <div class="">
     </div>
     <%= render @project %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this project", @project, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-red-800 text-white font-medium" %>
+    <div class="flex flex-row ml-2 w-full justify-between">
+      <div class="flex flex-row space-x-3">
+        <%= link_to "Edit details", edit_project_path(@project), class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+        <%= link_to "Cancel", projects_path, class: "rounded-lg py-3 px-5 bg-gray-200 font-medium" %>
+      </div>
+      <%= button_to "Destroy", @project, method: :delete, class: "rounded-lg py-3 px-5 bg-red-800 text-white font-medium" %>
     </div>
   </div>
 </div>

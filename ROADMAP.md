@@ -29,8 +29,8 @@
   - ~~Validate path from request to the saved path~~
 
 - Improve UI
-  - Improve projects pages
-  - Improve endpoints pages
+  - ~~Improve projects pages~~
+  - ~~Improve endpoints pages~~
 
 - Write tests
   - Write model tests

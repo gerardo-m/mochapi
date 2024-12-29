@@ -37,9 +37,16 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on "Projects"
   end
 
+  test "should visit endpoints" do
+    visit project_url(@project)
+    click_on "Endpoints", match: :first
+
+    assert_selector "h1", text: "Endpoints"
+  end
+
   test "should destroy Project" do
     visit project_url(@project)
-    click_on "Destroy this project", match: :first
+    click_on "Destroy", match: :first
 
     assert_text "Project was successfully destroyed"
   end

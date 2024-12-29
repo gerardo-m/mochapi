@@ -14,3 +14,8 @@ three:
   name: Project3
   space_name: project3
   url_preffix: api/v1
+
+to_destroy:
+  name: Disposable
+  space_name: disposable
+  url_preffix: 

@@ -1,0 +1,7 @@
+<div class="flex flex-row text-xl mb-10">
+  <%breadcrumb_links.each do |link| %>
+    <%= link_to link.key, link.value, class:"font-bold text-blue-600 hover:text-blue-800" %>
+    &nbsp>&nbsp
+  <%end%>
+  <%= breadcrumb_current%>
+</div>

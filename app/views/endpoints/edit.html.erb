@@ -1,8 +1,7 @@
-<div class="mx-auto md:w-2/3 w-full">
+<div class="mx-auto max-w-screen-lg w-full">
   <h1 class="font-bold text-4xl">Editing endpoint</h1>
 
   <%= render "form", endpoint: @endpoint, url: project_endpoint_path %>
 
-  <%= link_to "Show this endpoint", project_endpoint_path(project_id: @endpoint.project.id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to endpoints", project_endpoints_path(project_id: @endpoint.project.id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Cancel", project_endpoint_path(project_id: @endpoint.project.id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

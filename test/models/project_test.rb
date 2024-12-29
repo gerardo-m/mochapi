@@ -6,6 +6,7 @@ class ProjectTest < ActiveSupport::TestCase
     @new_project = Project.new(name: "newproject", space_name: "newproject")
     @project_no_name = Project.new(space_name: "newproject")
     @project_no_space_name = Project.new(name: "newproject")
+    @disposable_project = projects(:to_destroy)
   end
 
   test "should not save project without name" do
@@ -28,5 +29,11 @@ class ProjectTest < ActiveSupport::TestCase
     project.name = "Brand new name"
     project.space_name = @existing_project.space_name
     assert_not project.save, "Saved project with an existing space name"
+  end
+
+  test "should destroy endpoints when the project is destroyed" do
+    endpoint_id = @disposable_project.endpoints.first.id
+    @disposable_project.destroy
+    assert_raises(ActiveRecord::RecordNotFound) { Endpoint.find(endpoint_id) }
   end
 end

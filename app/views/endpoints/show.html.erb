@@ -1,15 +1,18 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
+<div class="mx-auto max-w-screen-lg w-full flex">
+  <div class="w-full">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
     <%= render @endpoint %>
 
-    <%= link_to "Edit this endpoint", edit_project_endpoint_path(@endpoint, project_id: @endpoint.project_id), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to endpoints", project_endpoints_path(project_id: @endpoint.project_id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this endpoint", project_endpoint_path, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="flex flex-row mt-5 justify-between">
+      <div class="flex flex-row space-x-3">
+        <%= link_to "Edit this endpoint", edit_project_endpoint_path(@endpoint, project_id: @endpoint.project_id), class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+        <%= link_to "Cancel", project_endpoints_path, class: "rounded-lg py-3 px-5 bg-gray-200 font-medium" %>
+      </div>
+      <%= button_to "Destroy", project_endpoint_path, method: :delete, class: "rounded-lg py-3 px-5 bg-red-800 text-white font-medium" %>
     </div>
+    
   </div>
 </div>
