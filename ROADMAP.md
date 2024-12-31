@@ -1,41 +1,23 @@
-# MOCHAPI
+## ROADMAP
 
-## What do we need for the v1?
+### v0.2.0
 
-- Manage projects and endpoints
-- Endpoints should parse path
-- Config responses to endpoints
-- Responses:
-  - Plain: just text
-  - Json: Should validate the text is valid json
-  - Json with variables: replace values with variables
+- Insert variables from path in responses
 
+### v0.3.0
 
-## Current Tasks
+- Insert variables from body and headers in responses
 
-- Add response to endpoint
-  - ~~Compact endpoint form~~
-  - ~~Add dropdown for response type~~
-  - ~~Create partial for response~~
-  - ~~Save response along the endpoint~~
-  - ~~Repeat in the edit/update view~~
+### v1.0.0
 
-- Delegate the request to the response object
-  - ~~Implement the model~~
-  - ~~Call the method from the controller~~
+- Support headers
+- Highlight response's code
+- Add variables by project
 
-- Handle path parameters
-  - ~~Parse endpoint path~~
-  - ~~Validate path from request to the saved path~~
+### Eventually
 
-- Improve UI
-  - ~~Improve projects pages~~
-  - ~~Improve endpoints pages~~
-
-- Write tests
-  - Write model tests
-  - Write controller tests?
-  - Write tests for lib/
-  - Write system tests
-  
-- Release v0.1.0
+- Validate response format (json, xml...)
+- Add conditions (therefore multiple responses per endpoint)
+- Support an schema input in addition of plain text
+- Data buckets, persistance
+- Activity monitoring
