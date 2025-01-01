@@ -1,0 +1,34 @@
+services:
+  app:
+    image: ger4rdo/mochapi:latest
+    ports:
+     - 80:80 # host:container // Change the first one if you want this in a different port
+    environment:
+      - DB_HOST=db
+      - MOCHAPI_DATABASE_PASSWORD
+      - RAILS_ENV=production 
+      - RAILS_SERVE_STATIC_FILES=true
+      - RAILS_LOG_TO_STDOUT=true
+      - SECRET_KEY_BASE
+    links:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=mochapi_production
+      - MYSQL_MULTIPLE_DATABASES=mochapi_production_cache,mochapi_production_queue,mochapi_production_cable
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_USER=mochapi
+      - MYSQL_PASSWORD
+    ports:
+      - "3306:3306" # host:container // Change the first one if you want the db in a different port
+    volumes:
+      - ./sqlinit:/docker-entrypoint-initdb.d
+      - mysql:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  mysql:

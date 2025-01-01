@@ -15,8 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
-  socket: /var/run/mysqld/mysqld.sock
-  host: <%= ENV["DB_HOST"]%>
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -55,6 +54,8 @@ production:
     database: mochapi_production
     username: mochapi
     password: <%= ENV["MOCHAPI_DATABASE_PASSWORD"] %>
+    socket: /var/run/mysqld/mysqld.sock
+    host: <%= ENV["DB_HOST"]%>
   cache:
     <<: *primary_production
     database: mochapi_production_cache
