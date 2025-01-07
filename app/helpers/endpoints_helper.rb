@@ -24,4 +24,9 @@ module EndpointsHelper
     end
     @endpoint.name
   end
+
+  def curl_code(endpoint)
+    url = api_url(project: endpoint.project.space_name, apiurl: endpoint.path)
+    "curl -X #{endpoint.method} #{url}"
+  end
 end

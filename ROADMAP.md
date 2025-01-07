@@ -10,14 +10,15 @@
 
 ### v1.0.0
 
+- Add conditions (therefore multiple responses per endpoint)
+- Add variables by project
 - Support headers
 - Highlight response's code
-- Add variables by project
 
 ### Eventually
 
 - Validate response format (json, xml...)
-- Add conditions (therefore multiple responses per endpoint)
+
 - Support an schema input in addition of plain text
 - Data buckets, persistance
 - Activity monitoring
