@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :projects do
     resources :endpoints do
-      member do
+      collection do
         get "fetch_path_params"
       end
     end

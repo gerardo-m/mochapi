@@ -1,5 +1,5 @@
 class EndpointsController < ApplicationController
-  before_action :set_endpoint, only: %i[ show edit update destroy fetch_path_params]
+  before_action :set_endpoint, only: %i[ show edit update destroy ]
 
   # GET /endpoints or /endpoints.json
   def index
@@ -63,7 +63,7 @@ class EndpointsController < ApplicationController
 
   def fetch_path_params
     p = EndpointPaths::RegisteredPath.new(params[:path])
-    @path_params = p.params.map {|p| p.name}
+    @path_params = p.params.map { |p| p.name }
     render layout: false
   end
 
