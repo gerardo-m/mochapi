@@ -19,5 +19,7 @@
   - ~~Add curl format~~
   - ~~Add a button to clipboard~~
 - Show parameter values in endpoints
+  - ~~Implement stimulus controller~~
+  - ~~Implement controller endpoint to return the list of params~~
 - Implement Plain response replacing values with parameter values
 - Release v0.2.0

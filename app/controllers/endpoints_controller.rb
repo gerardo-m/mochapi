@@ -1,5 +1,5 @@
 class EndpointsController < ApplicationController
-  before_action :set_endpoint, only: %i[ show edit update destroy ]
+  before_action :set_endpoint, only: %i[ show edit update destroy fetch_path_params]
 
   # GET /endpoints or /endpoints.json
   def index
@@ -59,6 +59,12 @@ class EndpointsController < ApplicationController
       format.html { redirect_to project_endpoints_path, status: :see_other, notice: "Endpoint was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def fetch_path_params
+    p = EndpointPaths::RegisteredPath.new(params[:path])
+    @path_params = p.params.map {|p| p.name}
+    render layout: false
   end
 
   private

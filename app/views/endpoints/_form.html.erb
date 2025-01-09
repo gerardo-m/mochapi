@@ -1,4 +1,4 @@
-<%= form_with(model: endpoint, url: url, class: "contents") do |form| %>
+<%= form_with(model: endpoint, url: url, class: "contents", data: {controller: "path-params", "path-params-url-value" => fetch_path_params_project_endpoint_path(endpoint, project_id: endpoint.project.id)}) do |form| %>
   <% if endpoint.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(endpoint.errors.count, "error") %> prohibited this endpoint from being saved:</h2>
@@ -13,25 +13,29 @@
   <%= form.hidden_field :project_id %>
   <div class="flex flex-row w-full space-x-4">
     
-    <div class="my-5 w-1/3">
+    <div class="my-2 w-1/3">
       <%= form.label :name %>
       <%= form.text_field :name, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="my-5 w-2/3">
+    <div class="my-2 w-2/3">
       <%= form.label :path %>
-      <%= form.text_field :path, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :path, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full", "data-path-params-target"=> "source", "data-action"=>"path-params#pathEdited" %>
     </div>
   </div>
-  <div class="my-5 flex flex-row">
+  <div class="flex flex-row">
     <div class="my-5 w-1/3">
       <%= form.label :method %>
       <%= form.select :method, options_from_collection_for_select(Constants::SUPPORTED_METHODS, :to_s, :to_s),{}, class: "w-full" %>
     </div>
-    <div class="my-5 w-2/3">
+    <div class="my-5 w-2/3 ml-4">
       <%= form.label :type %>
-      <%= select_tag "type", options_from_collection_for_select(Response.responseable_types.map{ |type| KeyValue.new(type, type.titleize.humanize) }, :key, :value),class:"w-full ml-4" %>
+      <%= select_tag "type", options_from_collection_for_select(Response.responseable_types.map{ |type| KeyValue.new(type, type.titleize.humanize) }, :key, :value),class:"w-full"%>
     </div>
+  </div>
+  <div class="flex flex-row space-x-5 items-center">
+    <a>Available variables:</a>
+    <div class="flex flex-row space-x-4" data-path-params-target="list"></div>
   </div>
   <div class="my-5 w-full">
     <%= form.fields_for :response do |rform| %>
