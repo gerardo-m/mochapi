@@ -16,14 +16,21 @@ module EndpointPaths
 
     def matches?(parsed_path)
       return false unless @fragments.length == parsed_path.fragments.length
+      n_params = []
       (0..@fragments.length-1).each do |i|
         fragment = @fragments[i]
         matcher_f = parsed_path.fragments[i]
         return false if matcher_f.nil?
-        next if fragment.is_variable?
+        if fragment.is_variable?
+          n_fragment = PathFragment.new
+          n_fragment.name = fragment.name
+          n_fragment.value = matcher_f.value
+          n_params << n_fragment
+          next
+        end
         return false unless fragment.value == matcher_f.value
       end
-      true
+      return true, n_params
     end
   end
 

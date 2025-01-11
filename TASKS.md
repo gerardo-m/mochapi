@@ -22,4 +22,7 @@
   - ~~Implement stimulus controller~~
   - ~~Implement controller endpoint to return the list of params~~
 - Implement Plain response replacing values with parameter values
+  - ~~Parse variables from plain response~~
+  - ~~Validate variables~~
+  - ~~Replace variables with values~~
 - Release v0.2.0
