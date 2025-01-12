@@ -25,4 +25,5 @@
   - ~~Parse variables from plain response~~
   - ~~Validate variables~~
   - ~~Replace variables with values~~
+- Clean up the code
 - Release v0.2.0

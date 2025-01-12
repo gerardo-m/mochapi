@@ -14,18 +14,19 @@ module EndpointPaths
       super(string_path, true)
     end
 
+    ### Returns [bool, Hash]
+    ### First value is true if the parsed_path matches this registered_path
+    ### If the first value is true, the second value will contain a Hash
+    ### with the params, with the name as key and the value as value
     def matches?(parsed_path)
       return false unless @fragments.length == parsed_path.fragments.length
-      n_params = []
+      n_params = {}
       (0..@fragments.length-1).each do |i|
         fragment = @fragments[i]
         matcher_f = parsed_path.fragments[i]
         return false if matcher_f.nil?
         if fragment.is_variable?
-          n_fragment = PathFragment.new
-          n_fragment.name = fragment.name
-          n_fragment.value = matcher_f.value
-          n_params << n_fragment
+          n_params[fragment.name] = matcher_f.value
           next
         end
         return false unless fragment.value == matcher_f.value

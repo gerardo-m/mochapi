@@ -14,7 +14,6 @@ module PlainResponseParser
   end
 
   def self.replace_variable(content, var, value)
-    puts "###", content, var, value
     to_replace = [
       "${#{var}}",
       "$#{var}"

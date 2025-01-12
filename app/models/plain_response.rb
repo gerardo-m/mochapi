@@ -1,14 +1,13 @@
 class PlainResponse < ApplicationRecord
   include Responseable
 
-  def solve(params)
+  def solve(path_params)
     variables = PlainResponseParser.get_variables(content)
-    endpoint_vars = params
+    endpoint_vars = path_params
     n_content = ""
     variables.each do |var|
-      evi = endpoint_vars.index { |v| v.name == var }
-      unless evi.nil?
-        n_content = PlainResponseParser.replace_variable(content, var, endpoint_vars[evi].value)
+      if endpoint_vars.keys.include?(var)
+        n_content = PlainResponseParser.replace_variable(content, var, endpoint_vars[var])
         next
       end
     end
