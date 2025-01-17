@@ -12,7 +12,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = Project.create_default
+    @project.save!
   end
 
   # GET /projects/1/edit
@@ -65,6 +66,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.expect(project: [ :name, :space_name, :url_preffix ])
+      params.expect(project: [ :id, :name, :space_name, :url_preffix ])
     end
 end

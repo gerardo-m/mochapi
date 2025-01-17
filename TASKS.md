@@ -13,17 +13,14 @@
 
 ## Current Tasks
   
-- ~~Release v0.1.0~~
-- Add a field to copy a curl command per endpoint
-  - ~~Show the complete url~~
-  - ~~Add curl format~~
-  - ~~Add a button to clipboard~~
-- Show parameter values in endpoints
-  - ~~Implement stimulus controller~~
-  - ~~Implement controller endpoint to return the list of params~~
-- Implement Plain response replacing values with parameter values
-  - ~~Parse variables from plain response~~
-  - ~~Validate variables~~
-  - ~~Replace variables with values~~
-- Clean up the code
-- Release v0.2.0
+- Change the way models are saved, when hitting new they
+should be saved.
+  - ~~Try projects to save when hitting new~~
+  - ~~Extract to a concerns if possible~~
+  - Repeat for endpoints
+- Add "headers" special variable to add the headers in the 
+response if necessary
+  - Add headers variables to the solve method in response
+  - Think of a way to structure requests
+
+- Release v0.3.0

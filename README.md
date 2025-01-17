@@ -69,10 +69,6 @@ docker compose up -d
 
 ## What's next
 
-### v0.2.0
-
-- Insert variables from path in responses
-
 ### v0.3.0
 
 - Insert variables from body and headers in responses
