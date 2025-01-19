@@ -6,12 +6,12 @@ module NameSequenciable
       base_name = name.titleize
       next_name(attr, base_name, " ")
     end
-  
+
     def next_camelized_name
       base_name = name.camelize
       next_name(attr, base_name, "")
     end
-  
+
     def next_underscored_name
       base_name = name.underscore
       next_name(attr, base_name, "_")

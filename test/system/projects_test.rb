@@ -18,9 +18,9 @@ class ProjectsTest < ApplicationSystemTestCase
     fill_in "Name", with: @new_project.name
     fill_in "Space name", with: @new_project.space_name
     fill_in "Url preffix", with: @new_project.url_preffix
-    click_on "Create Project"
+    click_on "Save"
 
-    assert_text "Project was successfully created"
+    assert_text "Project was successfully saved"
     click_on "Projects"
   end
 
@@ -31,9 +31,9 @@ class ProjectsTest < ApplicationSystemTestCase
     fill_in "Name", with: @project.name
     fill_in "Space name", with: @project.space_name
     fill_in "Url preffix", with: @project.url_preffix
-    click_on "Update Project"
+    click_on "Save"
 
-    assert_text "Project was successfully updated"
+    assert_text "Project was successfully saved"
     click_on "Projects"
   end
 

@@ -16,9 +16,9 @@ class EndpointsTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @endpoint.name
     fill_in "Path", with: @endpoint.path
-    click_on "Create Endpoint"
+    click_on "Save"
 
-    assert_text "Endpoint was successfully created"
+    assert_text "Endpoint was successfully saved"
     click_on "Endpoints"
   end
 
@@ -28,9 +28,9 @@ class EndpointsTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @endpoint.name
     fill_in "Path", with: @endpoint.path
-    click_on "Update Endpoint"
+    click_on "Save"
 
-    assert_text "Endpoint was successfully updated"
+    assert_text "Endpoint was successfully saved"
     click_on "Endpoints"
   end
 

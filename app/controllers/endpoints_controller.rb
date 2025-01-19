@@ -12,9 +12,8 @@ class EndpointsController < ApplicationController
 
   # GET /endpoints/new
   def new
-    @endpoint = Endpoint.new
-    @endpoint.response = Response.new responseable: PlainResponse.new
-    @endpoint.project_id = params[:project_id]
+    @endpoint = Endpoint.create_default(project_id: params[:project_id])
+    @endpoint.save!
   end
 
   # GET /endpoints/1/edit
@@ -27,7 +26,7 @@ class EndpointsController < ApplicationController
     @endpoint.response = build_response
     respond_to do |format|
       if @endpoint.save
-        format.html { redirect_to project_endpoint_url(id: @endpoint.id), notice: "Endpoint was successfully created." }
+        format.html { redirect_to project_endpoint_url(id: @endpoint.id, project_id: @endpoint.project_id), notice: "Endpoint was successfully saved." }
         format.json { render :show, status: :created, location: @endpoint }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +41,7 @@ class EndpointsController < ApplicationController
     resassign_response
     respond_to do |format|
       if @endpoint.update(endpoint_params)
-        format.html { redirect_to project_endpoint_url(@endpoint), notice: "Endpoint was successfully updated." }
+        format.html { redirect_to project_endpoint_url(@endpoint, project_id: @endpoint.project_id), notice: "Endpoint was successfully saved." }
         format.json { render :show, status: :ok, location: @endpoint }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -94,7 +93,7 @@ class EndpointsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def endpoint_params
-      params.expect(endpoint: [ :name, :path, :method, :project_id ])
+      params.expect(endpoint: [ :id, :name, :path, :method, :project_id ])
     end
 
     def response_params
