@@ -14,6 +14,7 @@ class EndpointsController < ApplicationController
   def new
     @endpoint = Endpoint.create_default(project_id: params[:project_id])
     @endpoint.save!
+    redirect_to edit_project_endpoint_path(@endpoint, project_id: @endpoint.project_id, new: true)
   end
 
   # GET /endpoints/1/edit

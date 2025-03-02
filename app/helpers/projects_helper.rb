@@ -19,4 +19,8 @@ module ProjectsHelper
     end
     []
   end
+
+  def is_new_record?
+    params[:new].present?
+  end
 end

@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.create_default
     @project.save!
+    redirect_to edit_project_path(id: @project.id, new: true)
   end
 
   # GET /projects/1/edit

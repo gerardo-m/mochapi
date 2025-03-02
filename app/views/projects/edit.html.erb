@@ -1,5 +1,11 @@
-<div class="mx-auto max-w-screen-lg w-full">
-  <h1 class="font-bold text-4xl">Editing project</h1>
+<div class="mx-auto max-w-screen-lg w-full"
+  <% if is_new_record? %>
+    data-controller="text-focus"
+  <% end %>
+>
+  <h1 class="font-bold text-4xl">
+    <%= is_new_record? ? "New" : "Editing"%> project
+  </h1>
 
   <%= render "form", project: @project %>
 

@@ -30,4 +30,8 @@ module EndpointsHelper
     url = api_url(project: endpoint.project.space_name, apiurl: apiurl)
     "curl -X #{endpoint.method} #{url}"
   end
+
+  def is_new_record?
+    params[:new].present?
+  end
 end

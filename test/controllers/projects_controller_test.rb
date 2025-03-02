@@ -13,7 +13,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     get new_project_url
-    assert_response :success
+    assert_redirected_to %r{/projects/[0-9]*/edit}
   end
 
   test "should create project" do

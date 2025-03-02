@@ -14,7 +14,7 @@ class EndpointsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     get new_project_endpoint_url(project_id: @endpoint.project_id)
-    assert_response :success
+    assert_redirected_to %r{/projects/#{@endpoint.project_id}/endpoints/[0-9]*/edit}
   end
 
   test "should create endpoint" do
