@@ -5,7 +5,7 @@
     <div class="flex items-center"><%= endpoint.path%></div>
   </div>
   <div class="w-24 flex flex-row items-center justify-evenly">
-    <%= render "components/show_icon_button", url: project_endpoint_path(endpoint, project_id: endpoint.project_id), size: "2rem" %>
-    <%= render "components/edit_icon_button", url: edit_project_endpoint_path(endpoint, project_id: endpoint.project_id), size: "2rem" %>
+    <%= render "components/show_icon_button", url: endpoint_path(endpoint), size: "2rem" %>
+    <%= render "components/edit_icon_button", url: edit_endpoint_path(endpoint, project_id: endpoint.project_id), size: "2rem" %>
   </div>
 </div>

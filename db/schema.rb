@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_26_024020) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_03_013313) do
   create_table "endpoints", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "path"
@@ -19,6 +19,19 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_26_024020) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_endpoints_on_project_id"
+  end
+
+  create_table "expressions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "operand1_val"
+    t.string "operand1_type"
+    t.string "operation"
+    t.text "operand2_val"
+    t.string "operand2_type"
+    t.bigint "conditionable_id"
+    t.string "conditionable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conditionable_type", "conditionable_id"], name: "index_expressions_on_conditionable_type_and_conditionable_id"
   end
 
   create_table "plain_responses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -42,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_26_024020) do
     t.bigint "endpoint_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_number"
     t.index ["endpoint_id"], name: "index_responses_on_endpoint_id"
   end
 

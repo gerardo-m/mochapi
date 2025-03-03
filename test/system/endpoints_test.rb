@@ -23,7 +23,7 @@ class EndpointsTest < ApplicationSystemTestCase
   end
 
   test "should update Endpoint" do
-    visit project_endpoint_url(@endpoint, project_id: @endpoint.project_id)
+    visit endpoint_url(@endpoint, project_id: @endpoint.project_id)
     click_on "Edit this endpoint", match: :first
 
     fill_in "Name", with: @endpoint.name
@@ -35,7 +35,7 @@ class EndpointsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Endpoint" do
-    visit project_endpoint_url(@endpoint, project_id: @endpoint.project_id)
+    visit endpoint_url(@endpoint, project_id: @endpoint.project_id)
     click_on "Destroy", match: :first
 
     assert_text "Endpoint was successfully destroyed"

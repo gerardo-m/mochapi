@@ -3,7 +3,9 @@ module EndpointsHelper
 
   def breadcrumb_links
     action = params[:action]
-    project = Project.find(params[:project_id])
+    project_id = params[:project_id]
+    project_id ||= @endpoint.project_id
+    project = Project.find(project_id)
     links = [
       KeyValue.new("Projects", projects_path),
       KeyValue.new(project.name, project_path(project.id))

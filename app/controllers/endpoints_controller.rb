@@ -14,7 +14,7 @@ class EndpointsController < ApplicationController
   def new
     @endpoint = Endpoint.create_default(project_id: params[:project_id])
     @endpoint.save!
-    redirect_to edit_project_endpoint_path(@endpoint, project_id: @endpoint.project_id, new: true)
+    redirect_to edit_endpoint_path(@endpoint, new: true)
   end
 
   # GET /endpoints/1/edit
@@ -27,7 +27,7 @@ class EndpointsController < ApplicationController
     @endpoint.responses << build_response
     respond_to do |format|
       if @endpoint.save
-        format.html { redirect_to project_endpoint_url(id: @endpoint.id, project_id: @endpoint.project_id), notice: "Endpoint was successfully saved." }
+        format.html { redirect_to endpoint_url(id: @endpoint.id), notice: "Endpoint was successfully saved." }
         format.json { render :show, status: :created, location: @endpoint }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class EndpointsController < ApplicationController
     resassign_response
     respond_to do |format|
       if @endpoint.update(endpoint_params)
-        format.html { redirect_to project_endpoint_url(@endpoint, project_id: @endpoint.project_id), notice: "Endpoint was successfully saved." }
+        format.html { redirect_to endpoint_url(@endpoint), notice: "Endpoint was successfully saved." }
         format.json { render :show, status: :ok, location: @endpoint }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,10 +53,11 @@ class EndpointsController < ApplicationController
 
   # DELETE /endpoints/1 or /endpoints/1.json
   def destroy
+    project_id = @endpoint.project_id
     @endpoint.destroy!
 
     respond_to do |format|
-      format.html { redirect_to project_endpoints_path, status: :see_other, notice: "Endpoint was successfully destroyed." }
+      format.html { redirect_to project_endpoints_path(project_id: project_id), status: :see_other, notice: "Endpoint was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -98,10 +99,10 @@ class EndpointsController < ApplicationController
     end
 
     def response_params
-      r_params = params[:endpoint][:response_attributes]
+      r_params = params[:endpoint][:response]
       if params[:type]== "PlainResponse"
         return r_params.expect(plain_response: [ :content ])
       end
-      rparams
+      r_params
     end
 end

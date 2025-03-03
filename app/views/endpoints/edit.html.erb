@@ -7,7 +7,7 @@
     <%= is_new_record? ? "New" : "Editing"%> endpoint
   </h1>
 
-  <%= render "form", endpoint: @endpoint, url: project_endpoint_path %>
+  <%= render "form", endpoint: @endpoint, url: endpoint_path %>
 
-  <%= link_to "Cancel", project_endpoint_path(project_id: @endpoint.project.id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Cancel", endpoint_path(project_id: @endpoint.project.id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>
