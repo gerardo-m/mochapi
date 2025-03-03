@@ -7,7 +7,7 @@ class EndpointTest < ActiveSupport::TestCase
   end
 
   test "Endpoint's response should be destroyed along with the endpoint" do
-    response_id = @disposable_endpoint.response.id
+    response_id = @disposable_endpoint.default_response.id
     @disposable_endpoint.destroy
     assert_raises(ActiveRecord::RecordNotFound) { Response.find(response_id) }
   end

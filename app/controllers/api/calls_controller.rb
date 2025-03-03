@@ -41,7 +41,7 @@ module Api
     end
 
     def handle_endpoint(endpoint, path_params)
-      render endpoint.response.solve(path_params)
+      render endpoint.default_response.solve(path_params)
     end
   end
 end

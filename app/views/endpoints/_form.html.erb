@@ -41,7 +41,7 @@
   <div class="my-5 w-full">
     <%= form.fields_for :response do |rform| %>
       <div>
-        <%= render "response_field", form: rform, response: endpoint.response%>
+        <%= render "response_field", form: rform, response: endpoint.default_response%>
       </div>
     <% end %>
   </div>

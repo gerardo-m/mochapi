@@ -20,11 +20,14 @@ should be saved.
   - Repeat for endpoints
 - ~~Review the new way models are saved. Make sure they~~
 ~~don't create a new instance when refreshing~~.
-- Change response to request relation to has_many. When
-asking for a response just return the first one to avoid 
-errors
-- Add a default response scope and return that instead of 
-the first one when asking for a response.
+- ~~Change response to request relation to has_many. When
+asking for a response just return the first one to avoid
+errors~~
+- Fix the routing to endpoints and the scope to a single 
+project. The collection routes should have the projects
+in the path, the member ones don't
+- Create expressions model and table.
+- Create new partials for the response.
 - Add "headers" special variable to add the headers in the 
 response if necessary
   - Add headers variables to the solve method in response
