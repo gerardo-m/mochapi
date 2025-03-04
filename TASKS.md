@@ -28,6 +28,8 @@ project. The collection routes should have the projects
 in the path, the member ones don't~~
 - Create expressions model and table.
 - Create new partials for the response.
+- Fix Endpoints showing all endpoints regardles of the
+selected project.
 - Replace ParsedPath custom class with addressable gem
 - Add "headers" special variable to add the headers in the 
 response if necessary

@@ -1,0 +1,12 @@
+<%= form_with(model: response, class: "contents flex flex-col") do |form| %>
+  <div class="flex flex-row my-5 w-full items-center space-x-5">
+    <%= form.label :responseable_type, "Response type" %>
+    <%= form.select :responseable_type, options_from_collection_for_select(Response.responseable_types.map{ |type| KeyValue.new(type, type.titleize.humanize) }, :key, :value), {}, class:"w-full"%>
+  </div>
+  <div class="">
+    <%= render "responses/types/#{response.responseable_type.underscore}", form: form, response: response%>
+  </div>
+  <div class="">
+    <%= form.submit "Save", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+  </div>
+<% end %>

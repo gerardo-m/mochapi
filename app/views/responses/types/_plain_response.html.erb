@@ -1,0 +1,6 @@
+<%= form.fields_for :plain_response do |tform| %>
+  <div class="my-5">
+    <%= tform.label :content, class: "font-bold" %>
+    <%= tform.text_area  :content, value: response.plain_response.content, rows: 10, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+<%end%>
