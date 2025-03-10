@@ -6,6 +6,15 @@ class Response < ApplicationRecord
   delegate :solve, to: :responseable
   accepts_nested_attributes_for :responseable
 
+  def self.create_default(endpoint_id=nil)
+    response = Response.new
+    response.endpoint_id = endpoint_id
+    order_number = Response.where(endpoint_id: endpoint_id).maximum(:order_number) || 0
+    response.order_number = order_number + 1
+    response.responseable = PlainResponse.new
+    response
+  end
+
   # returns a KeyValue array
   def endpoint_vars
     endpoint.parsed_path.params.map { |par| KeyValue.new(par.name, par.value) }

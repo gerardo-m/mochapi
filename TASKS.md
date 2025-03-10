@@ -26,10 +26,13 @@ errors~~
 - ~~Fix the routing to endpoints and the scope to a single 
 project. The collection routes should have the projects
 in the path, the member ones don't~~
-- Create expressions model and table.
-- Create new partials for the response.
-- Fix Endpoints showing all endpoints regardles of the
-selected project.
+- ~~Create expressions model and table.~~
+- ~~Create new partials for the response.~~
+- ~~Fix Endpoints showing all endpoints regardles of the
+selected project.~~
+- Implement adding a new response, removing a response
+- Implement expressions(conditions) in edit view
+- Implement apply conditions to return the adequate response
 - Replace ParsedPath custom class with addressable gem
 - Add "headers" special variable to add the headers in the 
 response if necessary

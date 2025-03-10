@@ -41,22 +41,15 @@
     <a>Available variables:</a>
     <div class="flex flex-row space-x-4" data-path-params-target="list"></div>
   </div>
-  <h2 class= "text-xl font-bold py-5">Responses</h2>
-  <div>
+  <turbo-frame id="responses">
+    <div class="flex flex-row justify-between items-center">
+      <h2 class= "text-xl font-bold py-5">Responses</h2>
+      <%= link_to "Add response", new_endpoint_response_path(endpoint_id: endpoint.id), class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium", data: {"turbo-stream": true} %>
+    </div>
     <% endpoint.responses.each do |response| %>
-      <details class="bg-blue-300 hover:bg-blue-400 open:bg-blue-500 duration-300 rounded-lg">
-        <summary class="bg-inherit px-5 py-3 cursor-pointer flex content-between justify-between">
-          <% if response.is_default? %>
-            Default response
-          <% else%>
-            <%= "Response #{response.order_number.to_s}"%>
-          <% end%>
-        </summary>
-        <div class="bg-white px-5 py-3 border border-gray-300">
-          <%= render "responses/form", response: response %>
-        </div>
-      </details>
+      <%= render 'responses/item', response: response%>
+      
     <% end%>
-  </div>
+  </turbo-frame>
 </div>
 
