@@ -30,7 +30,7 @@ in the path, the member ones don't~~
 - ~~Create new partials for the response.~~
 - ~~Fix Endpoints showing all endpoints regardles of the
 selected project.~~
-- Implement adding a new response, removing a response
+- ~~Implement adding a new response, removing a response~~
 - Implement expressions(conditions) in edit view
 - Implement apply conditions to return the adequate response
 - Replace ParsedPath custom class with addressable gem

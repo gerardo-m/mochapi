@@ -1,11 +1,11 @@
-<details id="<%= dom_id response%>" class="bg-blue-300 hover:bg-blue-400 open:bg-blue-500 duration-300 rounded-lg">
+<details id="<%= dom_id response%>" class="bg-blue-200 hover:bg-blue-300 open:bg-blue-300 duration-300 rounded-lg">
   <summary class="flex flex-row bg-inherit px-5 py-3 cursor-pointer content-between justify-between">
     <% if response.is_default? %>
       Default response
     <% else%>
       <%= "Response #{response.order_number.to_s}"%>
     <% end%>
-    <%= render 'components/delete_icon_button', model: response, size: 20%>
+    <%= render 'components/delete_icon_button', model: response, size: 20 unless response.is_default?%>
   </summary>
   <div class="bg-white px-5 py-3 border border-gray-300">
     <%= render "responses/form", response: response %>

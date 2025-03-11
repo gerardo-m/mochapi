@@ -1,4 +1,5 @@
 module Constants
   VERSION="v0.2.0"
   SUPPORTED_METHODS=[ "GET", "POST", "PATCH", "PUT" ]
+  EXPRESSION_OPERANDS=[ "IS_A", "IS_EQUAL", "IS_NOT_EQUAL" ]
 end

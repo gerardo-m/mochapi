@@ -1,0 +1,11 @@
+<turbo-frame id="<%= dom_id expression%>">
+  <div>
+    <%= form_with(model: expression, class: "contents flex flex-col space-y-5") do |form| %>
+      <div>
+        <%= form.label :operation %>
+        <%= form.select :operation, options_from_collection_for_select(Constants::EXPRESSION_OPERANDS, :to_s, :to_s), { include_blank: true} %>
+
+      </div>
+    <% end %>
+  </div>
+</turbo-frame>

@@ -55,7 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_03_013313) do
     t.bigint "endpoint_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_number"
+    t.integer "order_number", default: 0
     t.index ["endpoint_id"], name: "index_responses_on_endpoint_id"
   end
 

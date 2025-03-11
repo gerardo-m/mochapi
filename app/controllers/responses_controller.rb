@@ -8,7 +8,7 @@ class ResponsesController < ApplicationController
     @response = Response.create_default(params.expect(:endpoint_id))
     @response.save!
     respond_to do |format|
-      format.turbo_stream {redirect_to edit_response_path(@response)}
+      format.turbo_stream { redirect_to edit_response_path(@response) }
     end
   end
 
@@ -45,7 +45,7 @@ class ResponsesController < ApplicationController
   end
 
   def response_params
-    params.expect(response: [:responseable_type])
+    params.expect(response: [ :responseable_type ])
   end
 
   def responseable_params
@@ -53,8 +53,8 @@ class ResponsesController < ApplicationController
     Response.responseable_types.each do |rtype|
       name = rtype.underscore.to_sym
       column_names = rtype.constantize.column_names
-      column_names = column_names.reject { |cn| ["created_at", "updated_at", "id"].include?(cn)}
-      column_names.map! { |cn| cn.to_sym}
+      column_names = column_names.reject { |cn| [ "created_at", "updated_at", "id" ].include?(cn) }
+      column_names.map! { |cn| cn.to_sym }
       p = {}
       p[name] = column_names
       response_permitted << p

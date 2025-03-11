@@ -15,6 +15,6 @@ class AddDefaultToResponses < ActiveRecord::Migration[8.0]
 
     add_index :expressions, [ :conditionable_type, :conditionable_id ]
 
-    add_column :responses, :order_number, :int
+    add_column :responses, :order_number, :int, default: 0
   end
 end

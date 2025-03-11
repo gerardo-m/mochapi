@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
-  # get "responses/index"
-  # get "responses/new"
-  # get "responses/edit"
-  # get "responses/update"
-  # get "responses/destroy"
-  # get "responses/show"
   resources :projects do
     resources :endpoints, shallow: true do
       collection do
         get "fetch_path_params"
       end
-      resources :responses, shallow: true
+      resources :responses, shallow: true do
+        resources :expressions, shallow: true
+      end
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
