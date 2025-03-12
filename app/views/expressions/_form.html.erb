@@ -3,9 +3,16 @@
     <%= form_with(model: expression, class: "contents flex flex-col space-y-5") do |form| %>
       <div>
         <%= form.label :operation %>
-        <%= form.select :operation, options_from_collection_for_select(Constants::EXPRESSION_OPERANDS, :to_s, :to_s), { include_blank: true} %>
-
+        <%= form.select :operation, options_from_collection_for_select(Constants::EXPRESSION_OPERANDS.keys, :to_s, :to_s), 
+          { include_blank: true}, { onchange: 'this.form.requestSubmit();'} %>
       </div>
+    
+      <div id="operation_<%= dom_id expression%>" >
+        <% unless expression.operation.nil? %>
+          <%= render "expressions/operands/#{Constants::EXPRESSION_OPERANDS[expression.operation]}"%>
+        <% end%>
+      </div>
+      
     <% end %>
   </div>
 </turbo-frame>
