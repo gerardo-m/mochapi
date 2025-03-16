@@ -1,7 +1,7 @@
-<turbo-stream action="update" target="operation_<%= dom_id @expression%>">
+<turbo-stream action="update" target="operands_<%= dom_id @expression%>">
   <template>
-    <% unless @expression.operation.nil? %>
-      <%= render "expressions/operands/#{Constants::EXPRESSION_OPERANDS[@expression.operation]}"%>
+    <% unless @expression.operation.blank? %>
+      <%= render "expressions/operands/#{Constants::EXPRESSION_OPERANDS[@expression.operation]}", expression: @expression%>
     <% end %>
   </template>
 </turbo-stream>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_03_013313) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
   create_table "endpoints", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "path"
@@ -47,6 +47,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_03_013313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_name"], name: "index_projects_on_space_name", unique: true
+  end
+
+  create_table "remembered_values", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "control_attribute"
+    t.string "value_attribute"
+    t.string "control_attribute_type"
+    t.string "value_attribute_type"
+    t.string "control_attribute_value"
+    t.string "value_attribute_value"
+    t.string "value_interchangeable_type"
+    t.bigint "value_interchangeable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["value_interchangeable_type", "value_interchangeable_id"], name: "idx_on_value_interchangeable_type_value_interchange_50d633ae16"
   end
 
   create_table "responses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
