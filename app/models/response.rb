@@ -32,4 +32,9 @@ class Response < ApplicationRecord
   def is_default?
     order_number == 0
   end
+
+  def conditions_met?(path_params)
+    return expression.is_met?(path_params) unless expression.nil?
+    false
+  end
 end

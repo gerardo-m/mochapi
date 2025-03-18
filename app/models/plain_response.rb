@@ -4,7 +4,7 @@ class PlainResponse < ApplicationRecord
   def solve(path_params)
     variables = PlainResponseParser.get_variables(content)
     endpoint_vars = path_params
-    n_content = ""
+    n_content = content
     variables.each do |var|
       if endpoint_vars.keys.include?(var)
         n_content = PlainResponseParser.replace_variable(content, var, endpoint_vars[var])

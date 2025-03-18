@@ -18,9 +18,24 @@ class Expression < ApplicationRecord
     Constants::EXPRESSION_OPERANDS[operation]
   end
 
+  def is_met?(path_params)
+    return is_present_met?(path_params) if operation == "IS_PRESENT"
+    return is_not_present_met?(path_params) if operation == "IS_NOT_PRESENT"
+    false
+    # TODO Finish this
+  end
+
   private
 
-  def perform_operation_change
-    puts "#### CHANGING OPERATION"
+  def is_present_met?(path_params)
+    if operand1_type == "param"
+      return path_params.keys.include?(operand1_val)
+    end
+    false
+    # TODO Finish for headers
+  end
+
+  def is_not_present_met?(path_params)
+    !is_present_met?(path_params)
   end
 end

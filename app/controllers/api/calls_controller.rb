@@ -41,7 +41,17 @@ module Api
     end
 
     def handle_endpoint(endpoint, path_params)
-      render endpoint.default_response.solve(path_params)
+      chosen_response = choose_response(endpoint, path_params)
+      render chosen_response.solve(path_params)
+    end
+
+    def choose_response(endpoint, path_params)
+      responses = endpoint.responses.order(order_number: :desc)
+      responses.each do |response|
+        return response if response.order_number == 0
+        return response if response.conditions_met?(path_params)
+      end
+      endpoint.default_response
     end
   end
 end
