@@ -31,12 +31,13 @@ in the path, the member ones don't~~
 - ~~Fix Endpoints showing all endpoints regardles of the
 selected project.~~
 - ~~Implement adding a new response, removing a response~~
-- Implement expressions(conditions) in edit view
-- Implement apply conditions to return the adequate response
-- Replace ParsedPath custom class with addressable gem
+- ~~Implement expressions(conditions) in edit view~~
+- ~~Implement apply conditions to return the adequate response~~
+- ~~Figure out the mechanic for the operation solving.~~
 - Add "headers" special variable to add the headers in the 
 response if necessary
   - Add headers variables to the solve method in response
   - Think of a way to structure requests
+- Replace ParsedPath custom class with addressable gem
 
 - Release v0.3.0

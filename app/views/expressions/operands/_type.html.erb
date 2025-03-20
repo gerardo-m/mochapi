@@ -1,6 +1,14 @@
 <div class="flex flex-wrap space-x-10">
   <div class="flex flex-row items-center space-x-5">
     <%= label_tag 'expression[operand1_type]', "Type: " %>
-    <%= select_tag 'expression[operand1_type]', options_from_collection_for_select(Constants::OPERAND_VARIABLE_TYPES, :to_s, :to_s, expression.operand1_type), {onchange: "this.form.requestSubmit();"}  %>
+    <%= select_tag 'expression[operand1_type]', options_from_collection_for_select(Constants::OPERAND_TYPES, :to_s, :to_s, expression.operand1_type), {onchange: "this.form.requestSubmit();"}  %>
+  </div>
+  <div class="flex flex-row items-center space-x-5">
+    <%= label_tag 'expression[operand1_val]', "Value: "%>
+    <%= text_field_tag 'expression[operand1_val]', expression.operand1_val, {onchange: "this.form.requestSubmit();"}%>
+  </div>
+  <div class="flex flex-row items-center space-x-5">
+    <%= label_tag 'expression[operand2_type]', "Type: " %>
+    <%= select_tag 'expression[operand2_type]', options_from_collection_for_select(Constants::OPERAND_VARIABLE_TYPES, :to_s, :to_s, expression.operand2_type), {onchange: "this.form.requestSubmit();"}  %>
   </div>
 </div>
