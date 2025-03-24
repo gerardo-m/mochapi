@@ -24,17 +24,12 @@ class Response < ApplicationRecord
     response
   end
 
-  # returns a KeyValue array
-  def endpoint_vars
-    endpoint.parsed_path.params.map { |par| KeyValue.new(par.name, par.value) }
-  end
-
   def is_default?
     order_number == 0
   end
 
-  def conditions_met?(path_params)
-    return expression.is_met?(path_params) unless expression.nil?
+  def conditions_met?(mochapi_request)
+    return expression.is_met?(mochapi_request) unless expression.nil?
     false
   end
 end

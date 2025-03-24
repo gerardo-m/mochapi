@@ -26,11 +26,11 @@ class Expression < ApplicationRecord
     form_type != form_type_was
   end
 
-  def is_met?(path_params)
+  def is_met?(mochapi_request)
     m_name = "#{operation.downcase}_met?"
     # We probably need to log this or put a warning in this case
     return false unless respond_to? m_name, true
-    send(m_name, path_params)
+    send(m_name, mochapi_request)
   end
 
   private
@@ -39,30 +39,35 @@ class Expression < ApplicationRecord
     Float(value) != nil rescue false
   end
 
-  def is_present_met?(path_params)
+  def is_present_met?(mochapi_request)
     if operand1_type == "param"
-      return path_params.keys.include?(operand1_val)
+      return mochapi_request.path_parameters.keys.include?(operand1_val)
+    end
+    if operand1_type == "header"
+      return mochapi_request.headers.include?(operand1_val)
     end
     false
-    # TODO Finish for headers
   end
 
-  def is_not_present_met?(path_params)
-    !is_present_met?(path_params)
+  def is_not_present_met?(mochapi_request)
+    !is_present_met?(mochapi_request)
   end
 
-  def is_a_met?(path_params)
+  def is_a_met?(mochapi_request)
     if operand1_type == "param"
-      value_to_verify = path_params[operand1_val]
-      puts "###", value_to_verify, operand2_type
+      value_to_verify = mochapi_request.path_parameters[operand1_val]
+      return is_numeric?(value_to_verify) if operand2_type == "number"
+      return !value_to_verify.nil? if operand2_type == "text"
+    end
+    if operand1_type == "header"
+      value_to_verify = mochapi_request.headers[operand1_val]
       return is_numeric?(value_to_verify) if operand2_type == "number"
       return !value_to_verify.nil? if operand2_type == "text"
     end
     false
-    # TODO Finish for headers
   end
 
-  def is_not_a_met?(path_params)
-    !is_not_a_met?(path_params)
+  def is_not_a_met?(mochapi_request)
+    !is_not_a_met?(mochapi_request)
   end
 end
