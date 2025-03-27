@@ -38,7 +38,8 @@ selected project.~~
 response if necessary~~
   - ~~Add headers variables to the solve method in response~~
   - ~~Think of a way to structure requests~~
-- Replace ParsedPath custom class with addressable gem
-- Change IS_A operation to IS_A_NUMBER
+- ~~Replace ParsedPath custom class with addressable gem~~
+- ~~Change IS_A operation to IS_A_NUMBER~~
+- Test
 
 - Release v0.3.0

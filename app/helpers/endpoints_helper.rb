@@ -28,9 +28,9 @@ module EndpointsHelper
   end
 
   def curl_code(endpoint)
-    apiurl = endpoint.path.blank? ? "/" :endpoint.path
+    apiurl = endpoint.path.blank? ? "/" : endpoint.path
     url = api_url(project: endpoint.project.space_name, apiurl: apiurl)
-    "curl -X #{endpoint.method} #{url}"
+    "curl -X #{endpoint.method} #{URI::Parser.new.unescape(url)}"
   end
 
   def is_new_record?

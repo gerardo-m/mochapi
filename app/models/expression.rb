@@ -53,21 +53,14 @@ class Expression < ApplicationRecord
     !is_present_met?(mochapi_request)
   end
 
-  def is_a_met?(mochapi_request)
-    if operand1_type == "param"
-      value_to_verify = mochapi_request.path_parameters[operand1_val]
-      return is_numeric?(value_to_verify) if operand2_type == "number"
-      return !value_to_verify.nil? if operand2_type == "text"
-    end
-    if operand1_type == "header"
-      value_to_verify = mochapi_request.headers[operand1_val]
-      return is_numeric?(value_to_verify) if operand2_type == "number"
-      return !value_to_verify.nil? if operand2_type == "text"
-    end
-    false
+  def is_a_number_met?(mochapi_request)
+    value_to_verify = nil
+    value_to_verify = mochapi_request.path_parameters[operand1_val] if operand1_type == "param"
+    value_to_verify = mochapi_request.headers[operand1_val] if operand1_type == "header"
+    is_numeric?(value_to_verify)
   end
 
-  def is_not_a_met?(mochapi_request)
-    !is_not_a_met?(mochapi_request)
+  def is_not_a_number_met?(mochapi_request)
+    !is_a_number_met?(mochapi_request)
   end
 end

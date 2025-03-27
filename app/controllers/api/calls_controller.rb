@@ -32,11 +32,11 @@ module Api
     protected
 
     def match_endpoint(project, method, apiurl)
-      parsed_path = EndpointPaths::ParsedPath.new(apiurl)
       project.endpoints.each do |endpoint|
-        matches, path_params = endpoint.parsed_path.matches?(parsed_path)
-        if matches
-          mochapi_request = build_mochapi_request(path_params)
+        template = Addressable::Template.new(endpoint.path)
+        match = template.match(apiurl)
+        if match.present?
+          mochapi_request = build_mochapi_request(match)
           return endpoint, mochapi_request
         end
       end

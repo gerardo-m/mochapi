@@ -14,11 +14,6 @@ class Endpoint < ApplicationRecord
     new_endpoint
   end
 
-  def parsed_path
-    @parsed_path ||= EndpointPaths::RegisteredPath.new(self.path)
-    @parsed_path
-  end
-
   def default_response
     self.responses.first
   end

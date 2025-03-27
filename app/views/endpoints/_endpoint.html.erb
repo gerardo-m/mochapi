@@ -10,7 +10,7 @@
   </div>
   <div class="flex flex-row my-5 items-center" data-controller="clipboard">
     <strong class="block font-medium mb-1 w-1/3">Curl:</strong>
-    <%= tag.input(value: curl_code(endpoint), "data-clipboard-target"=> "source", readonly: "", class: "w-1/2" ) %>
+    <%= tag.input(value: curl_code(endpoint).html_safe, "data-clipboard-target"=> "source", readonly: "", class: "w-1/2" ) %>
     <button class="ml-10 rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" data-action="clipboard#copy" data-clipboard-target="button">Copy
     </button>
   </div>
