@@ -40,6 +40,7 @@ response if necessary~~
   - ~~Think of a way to structure requests~~
 - ~~Replace ParsedPath custom class with addressable gem~~
 - ~~Change IS_A operation to IS_A_NUMBER~~
-- Test
+- ~~Add the rest of the http methods~~
+- ~~Test~~
 
 - Release v0.3.0

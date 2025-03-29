@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   namespace :api do
-    get ":project/*apiurl", to: "calls#get"
-    post ":project/*apiurl", to: "calls#post"
-    put ":project/*apiurl", to: "calls#put"
-    patch ":project/*apiurl", to: "calls#patch"
+    # get ":project/*apiurl", to: "calls#get"
+    # post ":project/*apiurl", to: "calls#post"
+    # put ":project/*apiurl", to: "calls#put"
+    # patch ":project/*apiurl", to: "calls#patch"
+    match ":project/*apiurl", to: "calls#handle_call", via: :all
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
