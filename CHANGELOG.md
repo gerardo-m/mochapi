@@ -3,6 +3,28 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.0] - 2025-03-29
+
+### Added
+
+- Projects and endpoints are now saved with default values when clicking
+"New"
+- Endpoints now can have multiple responses, there is always a default
+response
+- Expressions: are now conditions for secondary responses in the Endpoint
+edit view
+- Headers can now be used in responses and conditions
+- All rails supported http methods are now supported
+
+### Changed
+
+- All resources are now shallow nested. Changes in routing
+- Response path format now adheres to RFC 6570
+
+### Fixed
+
+- Minor bug fixes
+
 ## [0.2.0] - 2025-01-12
 
 ### Added 

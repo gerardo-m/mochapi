@@ -1,5 +1,5 @@
 module Constants
-  VERSION="v0.2.0"
+  VERSION="v0.3.0"
   SUPPORTED_METHODS=[ "GET", "POST", "PATCH", "PUT", "DELETE" ]
 
   EXPRESSION_FORM_TYPES = [ "type", "presence" ]
