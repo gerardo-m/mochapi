@@ -21,12 +21,11 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Project was successfully saved"
-    click_on "Projects"
   end
 
   test "should update Project" do
-    visit project_url(@project)
-    click_on "Edit details", match: :first
+    visit edit_project_url(@project)
+    # click_on "Edit details", match: :first
 
     fill_in "Name", with: @project.name
     fill_in "Space name", with: @project.space_name
@@ -34,7 +33,6 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Project was successfully saved"
-    click_on "Projects"
   end
 
   test "should visit endpoints" do

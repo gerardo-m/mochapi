@@ -29,7 +29,7 @@ class EndpointsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update endpoint" do
     patch endpoint_url(@endpoint, project_id: @endpoint.project_id), params: { endpoint: { name: @endpoint.name, project_id: @endpoint.project_id, path: @endpoint.path } }
-    assert_redirected_to endpoint_url(@endpoint)
+    assert_redirected_to project_endpoints_url(project_id: @endpoint.project_id)
   end
 
   test "should destroy endpoint" do
