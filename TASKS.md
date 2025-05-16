@@ -22,5 +22,11 @@
   - ~~Change the links in endpoints.~~
   - ~~Add a delete button in the endpoints view.~~
 - Make the content a code box.
+  - Add a library to handle formatting
+  - Figure out how to make it work with a form
+- Fix endpoints edit view
+  - Not saving first time
+  - Copy curl command not updating
+- Add headers to responses
 - Add darkmode.
 - Release 0.4.0
