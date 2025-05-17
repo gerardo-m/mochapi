@@ -1,11 +1,14 @@
 <div class="flex flex-row px-5 border-2 border-blue-200 rounded-2xl">
 
   <div class="flex flex-row w-full h-10">
-    <div class="flex items-center w-1/3 text-2xl font-bold"> <%= endpoint.name%></div>
-    <div class="flex items-center"><%= endpoint.path%></div>
+    <a href="<%= edit_endpoint_path(endpoint)%>" class="flex  w-full text-2xl font-bold hover:text-blue-800 items-center"> 
+      <div class="flex items-center w-1/3 text-2xl font-bold"> <%= endpoint.name%></div>
+      <div class="flex items-center font-normal text-base"><%= endpoint.path%></div>
+    </a>
   </div>
-  <div class="w-24 flex flex-row items-center justify-evenly">
-    <%= render "components/show_icon_button", url: project_endpoint_path(endpoint, project_id: endpoint.project_id), size: "2rem" %>
-    <%= render "components/edit_icon_button", url: edit_project_endpoint_path(endpoint, project_id: endpoint.project_id), size: "2rem" %>
+  <div class="w-24 flex flex-row items-center justify-end">
+    <div class="stroke-red-600 hover:stroke-red-800">
+      <%= render "components/delete_icon_button", model: endpoint, size: "2rem" %>
+    </div>
   </div>
 </div>

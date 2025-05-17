@@ -1,0 +1,13 @@
+<%= form.fields_for :plain_response do |tform| %>
+  <div class="my-5" data-controller="codejar">
+    <%= tform.label :content, class: "font-bold" %>
+    <%= tform.text_area  :content, value: response.plain_response.content, rows: 6, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    <pre>
+    <code>
+      <div class="editor" data-codejar-target="text">
+        <%= response.plain_response.content%>
+      </div>
+    </code>
+    </pre>
+  </div>
+<%end%>

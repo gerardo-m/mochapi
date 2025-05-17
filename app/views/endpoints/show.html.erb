@@ -8,10 +8,10 @@
 
     <div class="flex flex-row mt-5 justify-between">
       <div class="flex flex-row space-x-3">
-        <%= link_to "Edit this endpoint", edit_project_endpoint_path(@endpoint, project_id: @endpoint.project_id), class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
-        <%= link_to "Cancel", project_endpoints_path, class: "rounded-lg py-3 px-5 bg-gray-200 font-medium" %>
+        <%= link_to "Edit this endpoint", edit_endpoint_path(@endpoint), class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+        <%= link_to "Cancel", project_endpoints_path(project_id: @endpoint.project_id), class: "rounded-lg py-3 px-5 bg-gray-200 font-medium" %>
       </div>
-      <%= button_to "Destroy", project_endpoint_path, method: :delete, class: "rounded-lg py-3 px-5 bg-red-800 text-white font-medium" %>
+      <%= button_to "Destroy", endpoint_path, method: :delete, class: "rounded-lg py-3 px-5 bg-red-800 text-white font-medium" %>
     </div>
     
   </div>

@@ -1,0 +1,18 @@
+<turbo-frame id="<%= dom_id expression%>">
+  <div>
+    <%= form_with(model: expression, class: "contents flex flex-col space-y-5") do |form| %>
+      <div>
+        <%= form.label :operation %>
+        <%= form.select :operation, options_from_collection_for_select(Constants::EXPRESSION_OPERANDS.keys, :to_s, :to_s, expression.operation), 
+          { include_blank: true }, { onchange: 'this.form.requestSubmit();'} %>
+      </div>
+    
+      <div id="operands_<%= dom_id expression%>" >
+        <% unless expression.operation.blank? %>
+          <%= render "expressions/operands/#{Constants::EXPRESSION_OPERANDS[expression.operation]}", expression: expression%>
+        <% end%>
+      </div>
+      
+    <% end %>
+  </div>
+</turbo-frame>

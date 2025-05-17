@@ -1,7 +1,7 @@
 module PlainResponseParser
   def self.get_variables(content)
     icontent = content.to_s
-    regexp = /[$]({[a-zA-Z][a-zA-Z0-9._-]*}|[a-zA-Z][a-zA-Z0-9._-]*)/
+    regexp = /[$]{[a-zA-Z][a-zA-Z0-9._-]*}/
     vars = []
     var = icontent[regexp]
     while !var.nil?
@@ -15,8 +15,7 @@ module PlainResponseParser
 
   def self.replace_variable(content, var, value)
     to_replace = [
-      "${#{var}}",
-      "$#{var}"
+      "${#{var}}"
     ]
     icontent = content.to_s
     to_replace.each do |placeholder|

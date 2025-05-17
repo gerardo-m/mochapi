@@ -13,7 +13,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     get new_project_url
-    assert_response :success
+    assert_redirected_to %r{/projects/[0-9]*/edit}
   end
 
   test "should create project" do
@@ -36,7 +36,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update project" do
     patch project_url(@project), params: { project: { name: @project.name, space_name: @project.space_name, url_preffix: @project.url_preffix } }
-    assert_redirected_to project_url(@project)
+    assert_redirected_to projects_url
   end
 
   test "should destroy project" do

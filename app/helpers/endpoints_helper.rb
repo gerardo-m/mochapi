@@ -3,7 +3,9 @@ module EndpointsHelper
 
   def breadcrumb_links
     action = params[:action]
-    project = Project.find(params[:project_id])
+    project_id = params[:project_id]
+    project_id ||= @endpoint.project_id
+    project = Project.find(project_id)
     links = [
       KeyValue.new("Projects", projects_path),
       KeyValue.new(project.name, project_path(project.id))
@@ -26,8 +28,12 @@ module EndpointsHelper
   end
 
   def curl_code(endpoint)
-    apiurl = endpoint.path.blank? ? "/" :endpoint.path
+    apiurl = endpoint.path.blank? ? "/" : endpoint.path
     url = api_url(project: endpoint.project.space_name, apiurl: apiurl)
-    "curl -X #{endpoint.method} #{url}"
+    "curl -X #{endpoint.method} #{URI::Parser.new.unescape(url)}"
+  end
+
+  def is_new_record?
+    params[:new].present?
   end
 end
