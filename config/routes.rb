@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       collection do
         get "fetch_path_params"
       end
+      member do
+        get "fetch_curl_code"
+      end
       resources :responses, shallow: true do
         resources :expressions, shallow: true
       end
@@ -12,10 +15,6 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   namespace :api do
-    # get ":project/*apiurl", to: "calls#get"
-    # post ":project/*apiurl", to: "calls#post"
-    # put ":project/*apiurl", to: "calls#put"
-    # patch ":project/*apiurl", to: "calls#patch"
     match ":project/*apiurl", to: "calls#handle_call", via: :all
   end
 

@@ -1,5 +1,5 @@
 class EndpointsController < ApplicationController
-  before_action :set_endpoint, only: %i[ show edit update destroy ]
+  before_action :set_endpoint, only: %i[ show edit update destroy fetch_curl_code]
 
   # GET /endpoints or /endpoints.json
   def index
@@ -65,6 +65,13 @@ class EndpointsController < ApplicationController
   def fetch_path_params
     template = Addressable::Template.new(params[:path])
     @path_params = template.variables
+    render layout: false
+  end
+
+  def fetch_curl_code
+    apiurl = params[:path].nil? ? "/" : params[:path]
+    url = api_url(project: @endpoint.project.space_name, apiurl: apiurl)
+    @curl_code ="curl -X #{@endpoint.method} #{URI::Parser.new.unescape(url)}"
     render layout: false
   end
 
