@@ -19,19 +19,16 @@ class EndpointsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text "Endpoint was successfully saved"
-    click_on "Endpoints"
   end
 
   test "should update Endpoint" do
-    visit endpoint_url(@endpoint, project_id: @endpoint.project_id)
-    click_on "Edit this endpoint", match: :first
+    visit edit_endpoint_url(@endpoint, project_id: @endpoint.project_id)
 
     fill_in "Name", with: @endpoint.name
     fill_in "Path", with: @endpoint.path
     click_on "Save"
 
     assert_text "Endpoint was successfully saved"
-    click_on "Endpoints"
   end
 
   test "should destroy Endpoint" do

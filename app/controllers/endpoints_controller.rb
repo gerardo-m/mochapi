@@ -1,5 +1,5 @@
 class EndpointsController < ApplicationController
-  before_action :set_endpoint, only: %i[ show edit update destroy ]
+  before_action :set_endpoint, only: %i[ show edit update destroy fetch_curl_code]
 
   # GET /endpoints or /endpoints.json
   def index
@@ -42,8 +42,8 @@ class EndpointsController < ApplicationController
     @endpoint.assign_attributes(endpoint_params)
     respond_to do |format|
       if @endpoint.update(endpoint_params)
-        format.html { redirect_to endpoint_url(@endpoint), notice: "Endpoint was successfully saved." }
-        format.json { render :show, status: :ok, location: @endpoint }
+        format.html { redirect_to project_endpoints_path(project_id: @endpoint.project_id), notice: "Endpoint was successfully saved." }
+        format.json { render :show, status: :ok, location: project_endpoints_path(project_id: @endpoint.project_id) }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @endpoint.errors, status: :unprocessable_entity }
@@ -63,8 +63,15 @@ class EndpointsController < ApplicationController
   end
 
   def fetch_path_params
-    p = EndpointPaths::RegisteredPath.new(params[:path])
-    @path_params = p.params.map { |p| p.name }
+    template = Addressable::Template.new(params[:path])
+    @path_params = template.variables
+    render layout: false
+  end
+
+  def fetch_curl_code
+    apiurl = params[:path].nil? ? "/" : params[:path]
+    url = api_url(project: @endpoint.project.space_name, apiurl: apiurl)
+    @curl_code ="curl -X #{@endpoint.method} #{URI::Parser.new.unescape(url)}"
     render layout: false
   end
 

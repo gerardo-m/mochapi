@@ -1,4 +1,7 @@
 <%= form_with(model: project, class: "contents") do |form| %>
+  <div class="inline float-right">
+    <%= form.submit "Save", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
   <% if project.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -26,7 +29,13 @@
     <%= form.text_field :url_preffix, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit "Save", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="flex flex-row items-center justify-between border-t-2 pt-5 my-5">
+    <div class= "w-2/3 flex flex-row">
+      <strong class="block font-medium mb-1 w-1/2">Endpoints:</strong>
+      <div class="w-1/2"><%= project.endpoints.count %></div>
+    </div>
+    <%= link_to "Edit endpoints", project_endpoints_path(project_id: project.id), class: "rounded-lg py-2 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
+
+  
 <% end %>

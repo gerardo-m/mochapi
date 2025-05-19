@@ -1,6 +1,13 @@
 <%= form.fields_for :plain_response do |tform| %>
-  <div class="my-5">
+  <div class="my-5" data-controller="codejar text-autosave">
     <%= tform.label :content, class: "font-bold" %>
-    <%= tform.text_area  :content, value: response.plain_response.content, rows: 6, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= tform.hidden_field :content, value: response.plain_response.content, data: {"text-autosave-target"=>"hinput"} %>
+    <pre>
+    <code>
+      <!-- This is in one line, because for some reason codejar interprets the spaces as part of the content -->
+      <div class="editor" data-codejar-target="text" data-text-autosave-target="text" data-action="keyup->text-autosave#debounceSubmit"
+      ><%= response.plain_response.content%></div>
+    </code>
+    </pre>
   </div>
 <%end%>

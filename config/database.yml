@@ -52,7 +52,7 @@ production:
   primary: &primary_production
     <<: *default
     database: mochapi_production
-    username: mochapi
+    username: <%= ENV["MOCHAPI_DATABASE_USER"] || "mochapi" %>
     password: <%= ENV["MOCHAPI_DATABASE_PASSWORD"] %>
     socket: /var/run/mysqld/mysqld.sock
     host: <%= ENV["DB_HOST"]%>

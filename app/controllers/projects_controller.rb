@@ -40,8 +40,8 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: "Project was successfully saved." }
-        format.json { render :show, status: :ok, location: @project }
+        format.html { redirect_to projects_path, notice: "Project was successfully saved." }
+        format.json { render :show, status: :ok, location: projects_path }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @project.errors, status: :unprocessable_entity }

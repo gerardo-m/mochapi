@@ -13,33 +13,20 @@
 
 ## Current Tasks
   
-- Change the way models are saved, when hitting new they
-should be saved.
-  - ~~Try projects to save when hitting new~~
-  - ~~Extract to a concerns if possible~~
-  - Repeat for endpoints
-- ~~Review the new way models are saved. Make sure they~~
-~~don't create a new instance when refreshing~~.
-- ~~Change response to request relation to has_many. When
-asking for a response just return the first one to avoid
-errors~~
-- ~~Fix the routing to endpoints and the scope to a single 
-project. The collection routes should have the projects
-in the path, the member ones don't~~
-- ~~Create expressions model and table.~~
-- ~~Create new partials for the response.~~
-- ~~Fix Endpoints showing all endpoints regardles of the
-selected project.~~
-- ~~Implement adding a new response, removing a response~~
-- ~~Implement expressions(conditions) in edit view~~
-- ~~Implement apply conditions to return the adequate response~~
-- ~~Figure out the mechanic for the operation solving.~~
-- ~~Add "headers" special variable to add the headers in the 
-response if necessary~~
-  - ~~Add headers variables to the solve method in response~~
-  - ~~Think of a way to structure requests~~
-- ~~Replace ParsedPath custom class with addressable gem~~
-- ~~Change IS_A operation to IS_A_NUMBER~~
-- Test
-
-- Release v0.3.0
+- ~~Fix available path variables not showing.~~
+- Remove show only views from the flow.
+  - ~~Merge the show view into the edit view for projects.~~
+  - ~~Change the links in projects.~~
+  - ~~Add a delete button in the projects view.~~
+  - ~~Merge the show view into the edit view for endpoints.~~
+  - ~~Change the links in endpoints.~~
+  - ~~Add a delete button in the endpoints view.~~
+- ~~Make the content a code box.~~
+  - ~~Add a library to handle formatting~~
+  - ~~Figure out how to make it work with a form~~
+- Fix endpoints edit view
+  - ~~Not saving first time~~
+  - Copy curl command not updating
+- Add headers to responses
+- Add darkmode.
+- Release 0.4.0

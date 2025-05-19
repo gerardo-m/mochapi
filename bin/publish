@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+curr='collation: "utf8mb4_0900_ai_ci"'
+old='collation: "utf8mb4_general_ci"'
+
+if [ $# -eq 0 ]; then
+  tag=latest
+else
+  tag=$1
+fi
+
+
+sudo docker build . --tag "ger4rdo/mochapi:$tag"
+sudo docker push "ger4rdo/mochapi:$tag"
+
+sed -i -e "s/$curr/$old/g" ./db/schema.rb
+
+sudo docker build . --tag "ger4rdo/mochapi:$tag-old"
+sudo docker push "ger4rdo/mochapi:$tag-old"
+
+sed -i -e "s/$old/$curr/g" ./db/schema.rb
+
+echo "image version $tag built and pushed :)"

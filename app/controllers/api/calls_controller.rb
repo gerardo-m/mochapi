@@ -3,36 +3,26 @@ module Api
     def initialize
     end
 
-    def get
+    def handle_call
       project = Project.where(space_name: params[:project]).first
       if project.nil?
         return render json: { error: 404, error_message: "Not found",
           message: "Project with space name #{params[:project]} not found" }, status: :not_found
       end
-      endpoint, mochapi_request = match_endpoint(project, "GET", params[:apiurl])
+      method = request.request_method
+      endpoint, mochapi_request = match_endpoint(project, method, params[:apiurl])
       if endpoint.nil?
         return render json: { error: 404, error_message: "Not found",
-          message: "Endpoint GET #{params[:apiurl]} not found" }, status: :not_found
+          message: "Endpoint #{method} #{params[:apiurl]} not found" }, status: :not_found
       end
       handle_endpoint(endpoint, mochapi_request)
-    end
-
-    def post
-      render json: { message: "TODO" }
-    end
-
-    def put
-      render json: { message: "TODO" }
-    end
-
-    def patch
-      render json: { message: "TODO" }
     end
 
     protected
 
     def match_endpoint(project, method, apiurl)
       project.endpoints.each do |endpoint|
+        next unless endpoint.method == method
         template = Addressable::Template.new(endpoint.path)
         match = template.match(apiurl)
         if match.present?

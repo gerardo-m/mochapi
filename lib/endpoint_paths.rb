@@ -1,3 +1,4 @@
+# Deprecated: will be removed next release
 module EndpointPaths
   class ParsedPath
     attr_reader :raw_path, :fragments, :params
