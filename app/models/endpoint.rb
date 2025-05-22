@@ -2,7 +2,9 @@ class Endpoint < ApplicationRecord
   include NameSequenciable
   belongs_to :project
   has_many :responses, autosave: true, dependent: :destroy
+  has_many :headers
   accepts_nested_attributes_for :responses
+  accepts_nested_attributes_for :headers, reject_if: :all_blank, allow_destroy: true
 
   def self.create_default(project_id: nil)
     new_endpoint = Endpoint.new

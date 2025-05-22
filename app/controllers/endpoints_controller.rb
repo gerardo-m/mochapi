@@ -39,6 +39,7 @@ class EndpointsController < ApplicationController
 
   # PATCH/PUT /endpoints/1 or /endpoints/1.json
   def update
+    # build_headers if endpoint_params[:headers]
     @endpoint.assign_attributes(endpoint_params)
     respond_to do |format|
       if @endpoint.update(endpoint_params)
@@ -83,8 +84,19 @@ class EndpointsController < ApplicationController
       @endpoint.default_response.plain_response
     end
 
+    def build_headers
+      headers_params.each do |header|
+        @endpoint.headers << Header.new(field: header[:field], value: header[:value])
+      end  
+    end
+
+
     # Only allow a list of trusted parameters through.
     def endpoint_params
-      params.expect(endpoint: [ :id, :name, :path, :method, :project_id ])
+      params.expect(endpoint: [ :id, :name, :path, :method, :project_id, headers_attributes: [[:id, :_destroy, :field, :value]]])
+    end
+
+    def headers_params
+      h_params = params[:endpoint][:headers_attributes]
     end
 end

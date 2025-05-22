@@ -5,7 +5,7 @@
 <div class= "mb-20 space-y-16" data-controller="path-params" 
   data-path-params-url-value="<%= fetch_path_params_project_endpoints_path( project_id: endpoint.project.id)%>"
   data-path-params-curl-url-value="<%= fetch_curl_code_endpoint_path(id: endpoint.id)%>">
-  <%= form_with(model: endpoint, url: url, class: "contents") do |form| %>
+  <%= form_with(model: endpoint, url: url, class: "contents", data: {controller: "nested-form", nested_form_wrapper_selector_value: '.nested-form-wrapper'}) do |form| %>
     <div class="inline float-right">
       <%= form.submit "Save", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
     </div>
@@ -43,7 +43,22 @@
     </div>
     
     <div class="flex flex-row">
+
+      <div class="my-5 w-1/2">
+        <template data-nested-form-target="template">
+          <%= form.fields_for :headers, Header.new, child_index: 'NEW_RECORD' do |header_fields| %>
+            <%= render "header_form", form: header_fields %>
+          <% end %>
+        </template>
+        <%= form.fields_for :headers do | header_fields| %>
+          <%= render "header_form", form: header_fields %>
+        <% end %>
+        <div data-nested-form-target="target"></div>
+      </div> 
+
+      <!-- Inserted headers will be injected before this target -->
       
+      <button type="button" data-action="nested-form#add" class="rounded-lg h-[40px] px-[10px] place-self-end bg-sky-500 text-white inline-block font-medium cursor-pointer">Add Header</button>        
       
     </div>
   <% end %>

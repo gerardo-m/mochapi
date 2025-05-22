@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_21_200404) do
   create_table "endpoints", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "path"
@@ -21,7 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
     t.index ["project_id"], name: "index_endpoints_on_project_id"
   end
 
-  create_table "expressions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "expressions", charset: "utf8", force: :cascade do |t|
     t.text "operand1_val"
     t.string "operand1_type"
     t.string "operation"
@@ -32,6 +32,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conditionable_type", "conditionable_id"], name: "index_expressions_on_conditionable_type_and_conditionable_id"
+  end
+
+  create_table "headers", charset: "utf8", force: :cascade do |t|
+    t.bigint "endpoint_id", null: false
+    t.string "field"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["endpoint_id"], name: "index_headers_on_endpoint_id"
   end
 
   create_table "plain_responses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -49,7 +58,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
     t.index ["space_name"], name: "index_projects_on_space_name", unique: true
   end
 
-  create_table "remembered_values", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "remembered_values", charset: "utf8", force: :cascade do |t|
     t.string "control_attribute"
     t.string "value_attribute"
     t.string "control_attribute_type"
@@ -74,5 +83,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
   end
 
   add_foreign_key "endpoints", "projects"
+  add_foreign_key "headers", "endpoints"
   add_foreign_key "responses", "endpoints"
 end
