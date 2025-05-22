@@ -2,10 +2,10 @@
   <div class="my-5" data-controller="codejar text-autosave">
     <%= tform.label :content, class: "font-bold" %>
     <%= tform.hidden_field :content, value: response.plain_response.content, data: {"text-autosave-target"=>"hinput"} %>
-    <pre>
+    <pre class="my-0">
     <code>
       <!-- This is in one line, because for some reason codejar interprets the spaces as part of the content -->
-      <div class="editor" data-codejar-target="text" data-text-autosave-target="text" data-action="keyup->text-autosave#debounceSubmit"
+      <div class="editor my-0" data-codejar-target="text" data-text-autosave-target="text" data-action="keyup->text-autosave#debounceSubmit"
       ><%= response.plain_response.content%></div>
     </code>
     </pre>
