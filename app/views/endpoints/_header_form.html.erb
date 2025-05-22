@@ -1,0 +1,32 @@
+<script>
+  function deleteHeader(element){
+    console.log(element)
+    element.value = "true"
+  }
+</script>
+
+<div class="flex flex-row nested-form-wrapper justify-start " data-new-record="<%= form.object.new_record? %>">
+<div class="flex flex-row">
+  <div class="flex-auto">
+     <div class="flex flex-col mx-3">  <!--my-2 w-1/2 -->
+      <div class="flex-auto w-5/6">
+      <%= form.label :field %>
+      <%= form.text_field :field %>
+      </div>
+      <div class="flex-auto w-5/6">
+      <%= form.label :value %>
+      <%= form.text_field :value %>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="place-content-center justify-content-start">
+    <button type="button" data-action="nested-form#remove" class="rounded-lg h-[40px] px-[10px] place-self-center bg-rose-500 text-white inline-block font-medium cursor-pointer" >Remove</button>
+    <%= form.hidden_field :_destroy %>
+
+  </div>
+</div>
+
+  
+</div>
