@@ -1,0 +1,13 @@
+<div id="<%= dom_id rheader%>">
+  <div class="flex flex-row border rounded-md justify-between">
+    <div class="flex flex-row space-x-3 items-center">
+      <input type="checkbox">
+      <span>header:</span><span><%= rheader.field%></span>
+      <span>value:</span><span><%= rheader.value%></span>
+    </div>
+    
+    <div class="stroke-red-600 hover:stroke-red-800">
+      <%= render "components/delete_icon_button", model: rheader, size: 20 %>
+    </div>
+  </div>
+</div>

@@ -10,12 +10,16 @@
   <div class="flex-auto">
      <div class="flex flex-col mx-3">  <!--my-2 w-1/2 -->
       <div class="flex-auto w-5/6">
-      <%= form.label :field %>
-      <%= form.text_field :field %>
+        <%= form.label :field %>
+        <%= form.text_field :field %>
       </div>
       <div class="flex-auto w-5/6">
-      <%= form.label :value %>
-      <%= form.text_field :value %>
+        <%= form.label :value %>
+        <%= form.text_field :value %>
+      </div>
+      <div class="flex-auto w-5/6">
+        <%= form.label :enabled %>
+        <%= form.checkbox :enabled %>
       </div>
     </div>
     

@@ -69,7 +69,7 @@ class EndpointsController < ApplicationController
   end
 
   def fetch_curl_code
-    apiurl = params[:path].nil? ? "/" : params[:path]
+    apiurl = params[:path].blank? ? "/" : params[:path]
     url = api_url(project: @endpoint.project.space_name, apiurl: apiurl)
     @curl_code ="curl -X #{@endpoint.method} #{URI::Parser.new.unescape(url)}"
     render plain: @curl_code, layout: false

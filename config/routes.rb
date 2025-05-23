@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       end
       resources :responses, shallow: true do
         resources :expressions, shallow: true
+        resources :headers, shallow: true
       end
     end
   end

@@ -2,6 +2,7 @@ class Response < ApplicationRecord
   delegated_type :responseable, types: %w[ PlainResponse ], dependent: :destroy
   belongs_to :endpoint
   has_one :expression, as: :conditionable, autosave: true, dependent: :destroy
+  has_many :headers
   # solve should return an object that could be sent to the render method
   delegate :solve, to: :responseable
   accepts_nested_attributes_for :responseable

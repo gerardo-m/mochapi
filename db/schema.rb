@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_21_200404) do
   create_table "endpoints", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "path"
@@ -32,6 +32,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conditionable_type", "conditionable_id"], name: "index_expressions_on_conditionable_type_and_conditionable_id"
+  end
+
+  create_table "headers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "response_id", null: false
+    t.string "field"
+    t.string "value"
+    t.boolean "enabled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["response_id"], name: "index_headers_on_response_id"
   end
 
   create_table "plain_responses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -74,5 +84,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_010627) do
   end
 
   add_foreign_key "endpoints", "projects"
+  add_foreign_key "headers", "responses"
   add_foreign_key "responses", "endpoints"
 end

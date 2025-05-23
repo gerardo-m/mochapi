@@ -1,16 +1,42 @@
 
   <% unless response.is_default? %>
-    <div class="">
-      <h2 class="font-bold">
-        Conditions
-      </h2>
-      <%= render 'expressions/form', expression: response.expression %>
-    </div>
+    <details class="bg-blue-200 hover:bg-blue-300 open:bg-blue-300 duration-300 rounded-lg">
+      <summary class="flex flex-row bg-inherit px-5 py-1 cursor-pointer content-between justify-between">
+        <h2 class="font-bold">
+          Conditions
+        </h2>
+      </summary>
+      <div class="p-3 bg-white border border-gray-300">
+        <%= render 'expressions/form', expression: response.expression %>
+      </div>
+    </details>
+    
   <% end %>
+  <div>
+    <details class="bg-blue-200 hover:bg-blue-300 open:bg-blue-300 duration-300 rounded-lg">
+      <summary class="flex flex-row bg-inherit px-5 py-1 cursor-pointer content-between justify-between">
+        <h2 class="font-bold">
+          Headers
+        </h2>
+        
+      </summary>
+      <div class="p-3 bg-white border border-gray-300 space-y-3">
+        <%= link_to "Add header",  new_response_header_path(response_id: response.id), class: "rounded-lg py-1 px-5 bg-blue-600 text-white font-medium", data: {"turbo-stream": true} %>
+        <div id="headers_<%= dom_id response%>" class="space-y-3">
+          <% response.headers.each do |rheader| %>
+            <%= render "headers/item", rheader: rheader %>
+          <%end%>
+        </div>
+      </div>
+      
+    </details>
+    
+  </div>
+
   <div>
     <%= form_with(model: response, class: "contents flex flex-col space-y-5") do |form| %>
       <div class="flex flex-row w-full items-center space-x-5">
-        <%= form.label :responseable_type, "Response type" %>
+        <%= form.label :responseable_type, "Response type", class: "font-bold" %>
         <%= form.select :responseable_type, options_from_collection_for_select(Response.responseable_types.map{ |type| KeyValue.new(type, type.titleize.humanize) }, :key, :value), {}, class:"w-full", onchange: 'this.form.requestSubmit();'%> 
         
       </div>

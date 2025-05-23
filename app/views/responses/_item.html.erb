@@ -5,9 +5,11 @@
     <% else%>
       <%= "Response #{response.order_number.to_s}"%>
     <% end%>
-    <%= render 'components/delete_icon_button', model: response, size: 20 unless response.is_default?%>
+    <div class="stroke-red-600 hover:stroke-red-800">
+      <%= render 'components/delete_icon_button', model: response, size: "1.5rem" unless response.is_default?%>
+    </div>
   </summary>
-  <div class="flex flex-col bg-white px-5 py-3 border border-gray-300 space-y-10">
+  <div class="flex flex-col bg-white px-7 py-5 border border-gray-300 space-y-7">
     <%= render "responses/form", response: response %>
   </div>
 </details>
