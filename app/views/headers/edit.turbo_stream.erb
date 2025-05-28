@@ -1,0 +1,7 @@
+<turbo-stream action="replace" target="<%= dom_id @header%>" >
+  <template>
+    <div id="<%= dom_id @header%>" class="p-3 border border-gray-400 rounded-lg">
+      <%= render 'form', rheader: @header, is_new_header: false%>
+    </div>
+  </template>
+</turbo-stream>

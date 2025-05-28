@@ -28,6 +28,9 @@
   - ~~Not saving first time~~
   - ~~Copy curl command not updating~~
 - Add headers to responses
-  - Figure out model changes.
+  - ~~Figure out model changes.~~
+  - ~~Add views and controller~~
+  - ~~Make the enabled checkbox work~~
+  - Use the headers in the API calls
 - Add darkmode.
 - Release 0.4.0

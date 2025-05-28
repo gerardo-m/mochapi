@@ -1,0 +1,29 @@
+<% is_new_header ||= false %>
+<%= form_with model: rheader do |form|%>
+  <div class="flex flex-row justify-between" data-controller="text-focus">  <!--my-2 w-1/2 -->
+    <div class="flex flex-row justify-start items-center space-x-3 p-2">
+      <div class="flex-row">
+        <%= form.label :field %>
+        <%= form.text_field :field, data: { "text-focus-target"=> "text" } %>
+      </div>
+      <div class="flex-row">
+        <%= form.label :value %>
+        <%= form.text_field :value %>
+      </div>
+      <div class="flex-row">
+        <%= form.label :enabled %>
+        <%= form.checkbox :enabled %>
+      </div>
+    </div>
+    <div class="flex flex-row justify-end space-x-2">
+      <%= form.button nil, class: "stroke-green-600 fill-green-600", title: "Accept" do %>
+        <%= render 'components/ok_icon_button', size: "1.5rem" %>
+      <% end%>
+      <% if is_new_header %>
+        <%= form.button nil, formmethod: :delete, class: "stroke-red-600 fill-red-600", title: "Cancel" do %>
+          <%= render 'components/cancel_icon_button', size: "1.5rem" %>
+        <% end%>
+      <% end%>
+    </div>
+  </div>
+<% end %>
