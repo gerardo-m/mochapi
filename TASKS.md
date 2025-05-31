@@ -31,6 +31,9 @@
   - ~~Figure out model changes.~~
   - ~~Add views and controller~~
   - ~~Make the enabled checkbox work~~
-  - Use the headers in the API calls
+  - ~~Use the headers in the API calls~~
 - Add darkmode.
+  - Update tailwind to v4
+  - Investigate if there is an easy way to change to dark mode
+  
 - Release 0.4.0

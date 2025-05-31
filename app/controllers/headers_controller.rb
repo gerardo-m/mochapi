@@ -25,6 +25,6 @@ class HeadersController < ApplicationController
   end
 
   def headers_params
-    params.expect(header: [:field, :value, :enabled])
+    params.expect(header: [ :field, :value, :enabled ])
   end
 end

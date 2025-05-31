@@ -44,6 +44,10 @@ module Api
 
     def handle_endpoint(endpoint, mochapi_request)
       chosen_response = choose_response(endpoint, mochapi_request)
+      enabled_headers =chosen_response.headers.enabled
+      enabled_headers.each do |header|
+        response.headers[header.field] = header.value
+      end
       render chosen_response.solve(mochapi_request)
     end
 

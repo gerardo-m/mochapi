@@ -2,7 +2,7 @@
   <div class="flex flex-row border rounded-md justify-between">
     <div class="flex flex-row space-x-3 items-center">
       <%= form_with model: rheader do |form|%>
-        <%= form.checkbox :enabled %>
+        <%= form.checkbox :enabled, onchange: "this.form.requestSubmit();" %>
       <% end%>
       <span class="font-semibold">header:</span><span><%= rheader.field%></span>
       <span class="font-semibold">value:</span><span><%= rheader.value%></span>

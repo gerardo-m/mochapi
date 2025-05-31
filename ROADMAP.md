@@ -1,15 +1,15 @@
 ## ROADMAP
 
-### v0.3.0
+### v0.4.0
 
-- Insert variables from body and headers in responses
+- Support headers
+- Highlight response's code
+- Dark mode
 
 ### v1.0.0
 
-- Add conditions (therefore multiple responses per endpoint)
 - Add variables by project
-- Support headers
-- Highlight response's code
+- Proper field validations
 
 ### Eventually
 
