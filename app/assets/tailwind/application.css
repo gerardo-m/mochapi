@@ -3,7 +3,7 @@
 @config "../../../config/tailwind.config.js";
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
-
+@custom-variant dark (&:where(.dark, .dark *));
 /*
 
 @layer components {
@@ -30,4 +30,24 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+  input[type=text],input:where(:not([type])),[type=email],[type=url],[type=password],[type=number],[type=date],[type=datetime-local],[type=month],[type=search],[type=tel],[type=time],[type=week],[multiple],textarea,select {
+    @apply bg-white dark:bg-surface-900 stroke-black dark:stroke-surface-light;
+  }
+  
+}
+
+@theme {
+  --color-surface-50: #f6f6f7;
+  --color-surface-100: #eeeef1;
+  --color-surface-200: #dad9df;
+	--color-surface-300: #cfcdd4;
+	--color-surface-400: #bab7c2;
+	--color-surface-500: #a8a4b0;
+	--color-surface-600: #948e9d;
+	--color-surface-700: #7f7b87;
+	--color-surface-800: #69646f;
+	--color-surface-900: #57545b;
+	--color-surface-950: #323135;
+	--color-surface-light: #eeeef1;
+	--color-surface-dark: #222125;
 }

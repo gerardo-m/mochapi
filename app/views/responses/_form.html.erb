@@ -6,7 +6,7 @@
           Conditions
         </h2>
       </summary>
-      <div class="p-3 bg-white border border-gray-300">
+      <div class="p-3 bg-surface-light dark:bg-surface-dark border border-gray-300">
         <%= render 'expressions/form', expression: response.expression %>
       </div>
     </details>
@@ -20,7 +20,7 @@
         </h2>
         
       </summary>
-      <div class="p-3 bg-white border border-gray-300 space-y-3">
+      <div class="p-3 bg-surface-light dark:bg-surface-dark border border-gray-300 space-y-3">
         <%= link_to "Add header",  new_response_header_path(response_id: response.id), class: "rounded-lg py-1 px-5 bg-blue-600 text-white font-medium", data: {"turbo-stream": true} %>
         <div id="headers_<%= dom_id response%>" class="space-y-3">
           <% response.headers.each do |rheader| %>

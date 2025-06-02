@@ -9,7 +9,7 @@
       <%= render 'components/delete_icon_button', model: response, size: "1.5rem" unless response.is_default?%>
     </div>
   </summary>
-  <div class="flex flex-col bg-white px-7 py-5 border border-gray-300 space-y-7">
+  <div class="flex flex-col bg-surface-light dark:bg-surface-dark px-7 py-5 border border-gray-300 space-y-7">
     <%= render "responses/form", response: response %>
   </div>
 </details>
