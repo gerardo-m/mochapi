@@ -2,6 +2,6 @@
   <div class="my-5" data-controller="codejar text-autosave">
     <%= tform.label :content, class: "font-bold" %>
     <%= tform.hidden_field :content, value: response.plain_response.content, data: {"text-autosave-target"=>"hinput"} %>
-    <div class="editor my-0 border border-gray-300 rounded-lg p-3" data-codejar-target="text" data-text-autosave-target="text" data-action="keyup->text-autosave#debounceSubmit"><%= response.plain_response.content%></div>
+    <div class="font-mono editor my-0 border border-gray-300 rounded-lg p-3" data-codejar-target="text" data-text-autosave-target="text" data-action="keyup->text-autosave#debounceSubmit"><%= response.plain_response.content%></div>
   </div>
 <%end%>
