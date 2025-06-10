@@ -33,6 +33,10 @@
   input[type=text],input:where(:not([type])),[type=email],[type=url],[type=password],[type=number],[type=date],[type=datetime-local],[type=month],[type=search],[type=tel],[type=time],[type=week],[multiple],textarea,select {
     @apply bg-white dark:bg-surface-900 stroke-black dark:stroke-surface-light;
   }
+
+  details{
+    @apply bg-blue-200 dark:bg-blue-900 hover:bg-blue-300 dark:hover:bg-blue-800 open:bg-blue-300 dark:open:bg-blue-800 rounded-lg
+  }
   
 }
 
