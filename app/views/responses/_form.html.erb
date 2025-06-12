@@ -20,8 +20,8 @@
         </h2>
         
       </summary>
-      <div class="p-3 bg-surface-light dark:bg-surface-dark border border-gray-300 space-y-3">
-        <%= link_to "Add header",  new_response_header_path(response_id: response.id), class: "rounded-lg py-1 px-5 bg-blue-600 text-white font-medium", data: {"turbo-stream": true} %>
+      <div class="flex flex-col p-3 bg-surface-light dark:bg-surface-dark border border-gray-300 space-y-5">
+        <%= link_to "Add header",  new_response_header_path(response_id: response.id), class: "rounded-lg py-1 px-5 bg-blue-600 text-white font-medium w-fit", data: {"turbo-stream": true} %>
         <div id="headers_<%= dom_id response%>" class="space-y-3">
           <% response.headers.each do |rheader| %>
             <%= render "headers/item", rheader: rheader %>
