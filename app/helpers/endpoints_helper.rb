@@ -8,7 +8,7 @@ module EndpointsHelper
     project = Project.find(project_id)
     links = [
       KeyValue.new("Projects", projects_path),
-      KeyValue.new(project.name, project_path(project.id))
+      KeyValue.new(project.name, edit_project_path(project.id))
     ]
     unless COLLECTION_ACTIONS.include?(action)
       links << KeyValue.new("Endpoints", project_endpoints_path(project_id: project.id))

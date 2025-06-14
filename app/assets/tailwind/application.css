@@ -4,15 +4,16 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:where(.dark, .dark *));
-/*
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply bg-blue-600 dark:bg-blue-400 hover:bg-blue-700 dark:hover:bg-blue-500 text-white;
+  }
+
+  .lnk-primary {
+    @apply text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-500;
   }
 }
-
-*/
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -31,7 +32,7 @@
     border-color: var(--color-gray-200, currentcolor);
   }
   input[type=text],input:where(:not([type])),[type=email],[type=url],[type=password],[type=number],[type=date],[type=datetime-local],[type=month],[type=search],[type=tel],[type=time],[type=week],[multiple],textarea,select {
-    @apply bg-white dark:bg-surface-900 stroke-black dark:stroke-surface-light;
+    @apply bg-white dark:bg-surface-950 stroke-black dark:stroke-surface-light;
   }
 
   details{

@@ -8,7 +8,7 @@
   data-path-params-curl-url-value="<%= fetch_curl_code_endpoint_path(id: endpoint.id)%>">
   <%= form_with(model: endpoint, url: url, class: "contents") do |form| %>
     <div class="inline float-right">
-      <%= form.submit "Save", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+      <%= form.submit "Save", class: "btn-primary rounded-lg py-3 px-5 font-medium cursor-pointer" %>
     </div>
     
     <% if endpoint.errors.any? %>
@@ -52,7 +52,7 @@
     <strong class="block font-medium mb-1 w-1/3">Curl:</strong>
     <div class="flex flex-row w-full">
       <%= tag.input(value: curl_code(endpoint).html_safe, "data-clipboard-target"=> "source", "data-path-params-target"=>"curl", readonly: "", class: "w-full" ) %>
-      <button class="ml-10 rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" data-action="clipboard#copy" data-clipboard-target="button">Copy
+      <button class="btn-primary ml-10 rounded-lg py-3 px-5 font-medium" data-action="clipboard#copy" data-clipboard-target="button">Copy
       </button>
     </div>
   </div>
@@ -63,7 +63,7 @@
   <turbo-frame id="responses">
     <div class="flex flex-row justify-between items-center">
       <h2 class= "text-xl font-bold py-5">Responses</h2>
-      <%= link_to "Add response", new_endpoint_response_path(endpoint_id: endpoint.id), class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium", data: {"turbo-stream": true} %>
+      <%= link_to "Add response", new_endpoint_response_path(endpoint_id: endpoint.id), class: "btn-primary rounded-lg py-3 px-5 font-medium", data: {"turbo-stream": true} %>
     </div>
     <% endpoint.responses.each do |response| %>
       <%= render 'responses/item', response: response%>
