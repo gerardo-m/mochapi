@@ -3,6 +3,26 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.4.0] - 2025-06-15
+
+### Added
+
+- Light code editor for the content in the plain response.
+- Headers to responses.
+- Dark mode.
+
+### Changed
+
+- Removed all show views from the flow of the application. Only 
+edit views are now displayed.
+
+### Fixed
+
+- Available variables in endpoint form now are showing and updating
+correctly according to standard RFC 6570
+- Resolved bug where the curl code was throwing an error when the 
+path was empty
+
 ## [0.3.0] - 2025-03-29
 
 ### Added
