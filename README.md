@@ -119,13 +119,14 @@ That's it, your mochapi instance should be up and running on the port you expose
 
 ### v0.5.0
 
-- Nested conditions
+- Set response response code
+- Add variables
 - Auto-save on everything
 - Visual improvements
 
 ### v1.0.0
 
-- Add variables by project
+- Nested conditions
 - Handle all types of variables gracefully
 
 ### Eventually

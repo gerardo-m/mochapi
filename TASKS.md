@@ -13,3 +13,11 @@
 
 ## Current Tasks
   
+- Add status code to responses
+  - ~~Add status code to response model~~
+  - Add status code select to the view
+- Add variables
+  - Design the model. Should be able to belong to a project or to an endpoint
+  - Add variables to the endpoint view
+  - Validate that the variables can't be repeated, verify in the project as well
+- Add the variables to the conditions
