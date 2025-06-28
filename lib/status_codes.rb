@@ -6,7 +6,7 @@ module StatusCodes
       KeyValue.new(101, "Switching Protocols"),
       KeyValue.new(102, "Processing"),
       KeyValue.new(103, "Early Hints"),
-      
+
       # 2xx Success
       KeyValue.new(200, "OK"),
       KeyValue.new(201, "Created"),
@@ -18,7 +18,7 @@ module StatusCodes
       KeyValue.new(207, "Multi-Status"),
       KeyValue.new(208, "Already Reported"),
       KeyValue.new(226, "IM Used"),
-      
+
       # 3xx Redirection
       KeyValue.new(300, "Multiple Choices"),
       KeyValue.new(301, "Moved Permanently"),
@@ -28,7 +28,7 @@ module StatusCodes
       KeyValue.new(305, "Use Proxy"),
       KeyValue.new(307, "Temporary Redirect"),
       KeyValue.new(308, "Permanent Redirect"),
-      
+
       # 4xx Client Errors
       KeyValue.new(400, "Bad Request"),
       KeyValue.new(401, "Unauthorized"),
@@ -59,7 +59,7 @@ module StatusCodes
       KeyValue.new(429, "Too Many Requests"),
       KeyValue.new(431, "Request Header Fields Too Large"),
       KeyValue.new(451, "Unavailable For Legal Reasons"),
-      
+
       # 5xx Server Errors
       KeyValue.new(500, "Internal Server Error"),
       KeyValue.new(501, "Not Implemented"),
