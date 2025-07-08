@@ -14,6 +14,6 @@ class PlainResponse < ApplicationRecord
         next
       end
     end
-    { plain: n_content }
+    { plain: n_content, status: self.response.status_code }
   end
 end

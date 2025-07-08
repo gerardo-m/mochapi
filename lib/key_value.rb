@@ -5,4 +5,8 @@ class KeyValue
     @key = key
     @value = value
   end
+
+  def key_and_value
+    "#{key} - #{value}"
+  end
 end

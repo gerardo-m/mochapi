@@ -20,6 +20,7 @@ class Response < ApplicationRecord
     response.endpoint_id = endpoint_id
     order_number = Response.where(endpoint_id: endpoint_id).maximum(:order_number) || 0
     response.order_number = order_number + 1
+    response.status_code = 200 # Default response is 200 OK
     response.responseable = PlainResponse.new
     response.expression = Expression.new
     response

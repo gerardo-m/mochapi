@@ -37,15 +37,7 @@
     <%= form_with(model: response, class: "contents flex flex-col space-y-5") do |form| %>
       <div class="flex flex-row w-full items-center space-x-5">
         <%= form.label :status_code, "Status", class: "font-bold" %>
-        <select id="test-select" class="w-full" data-controller="search-select">
-          <option value="200">200</option>
-          <option value="201">201</option>
-          <option value="202">202</option>
-          <option value="203">203</option>
-          <option value="204">204</option>
-          <option value="205">205</option>
-          <option value="206">206</option>
-        </select>
+        <%= form.select :status_code, options_from_collection_for_select(StatusCodes.all, :key, :key_and_value, response.status_code), {}, class:"w-full", data: {controller: "search-select"}, onchange: 'this.form.requestSubmit();' %>
       </div>
       <div class="flex flex-row w-full items-center space-x-5">
         <%= form.label :responseable_type, "Response type", class: "font-bold" %>

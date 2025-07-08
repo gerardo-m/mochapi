@@ -45,7 +45,7 @@ class ResponsesController < ApplicationController
   end
 
   def response_params
-    params.expect(response: [ :responseable_type ])
+    params.expect(response: [ :responseable_type, :status_code ])
   end
 
   def responseable_params

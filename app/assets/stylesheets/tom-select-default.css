@@ -28,9 +28,6 @@
 .ts-wrapper.multi.has-items .ts-control {
   padding: calc(8px - 2px - 0) 8px calc(8px - 2px - 3px - 0);
 }
-.full .ts-control {
-/*  background-color: #fff;*/
-}
 .disabled .ts-control, .disabled .ts-control * {
   cursor: default !important;
 }
@@ -45,19 +42,6 @@
   cursor: pointer;
   margin: 0 3px 3px 0;
   padding: 2px 6px;
-  /* background: #f2f2f2;
-  color: #303030;
-  border: 0 solid #d0d0d0; */
-}
-.ts-wrapper.multi .ts-control > div.active {
-  /* background: #e8e8e8; */
-  /* color: #303030;
-  border: 0 solid #cacaca; */
-}
-.ts-wrapper.multi.disabled .ts-control > div, .ts-wrapper.multi.disabled .ts-control > div.active {
-  /* color: rgb(124.5, 124.5, 124.5); */
-  /* background: white;
-  border: 0 solid white; */
 }
 .ts-control > input {
   flex: 1 1 auto;
@@ -99,7 +83,6 @@
 }
 .disabled .ts-control {
   opacity: 0.5;
-  /* background-color: #fafafa; */
 }
 .input-hidden .ts-control > input {
   opacity: 0;
@@ -114,7 +97,6 @@
   width: 100%;
   z-index: 10;
   border: 1px solid #d0d0d0;
-  /* background: #fff; */
   margin: 0.25rem 0 0;
   border-top: 0 none;
   box-sizing: border-box;
@@ -145,15 +127,6 @@
 }
 .ts-dropdown .optgroup:first-child .optgroup-header {
   border-top: 0 none;
-}
-.ts-dropdown .optgroup-header {
-  /* color: #303030;
-  background: #fff;
-  cursor: default; */
-}
-.ts-dropdown .active {
-  /* background-color: #f5fafd;
-  color: #495c68; */
 }
 .ts-dropdown .active.create {
   color: #495c68;
@@ -241,14 +214,10 @@
   position: absolute;
   right: 8px;
   top: 50%;
-  /* color: #303030; */
   opacity: 0.4;
   margin-top: -12px;
   line-height: 20px;
   font-size: 20px !important;
-}
-.ts-wrapper .dropdown-header-close:hover {
-  /* color: black; */
 }
 
 .plugin-dropdown_input.focus.dropdown-active .ts-control {
@@ -320,12 +289,6 @@
   border-radius: 0 2px 2px 0;
   box-sizing: border-box;
 }
-.ts-wrapper.plugin-remove_button .item .remove:hover {
-  /* background: rgba(0, 0, 0, 0.05); */
-}
-.ts-wrapper.plugin-remove_button.disabled .item .remove:hover {
-  /* background: none; */
-}
 .ts-wrapper.plugin-remove_button .remove-single {
   position: absolute;
   right: 0;
@@ -386,9 +349,7 @@
 .ts-dropdown,
 .ts-control,
 .ts-control input {
-  /* color: #303030; */
   font-family: inherit;
-  font-size: 13px;
   line-height: 18px;
 }
 
