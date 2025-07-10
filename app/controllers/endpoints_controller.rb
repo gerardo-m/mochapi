@@ -1,5 +1,6 @@
 class EndpointsController < ApplicationController
-  before_action :set_endpoint, only: %i[ show edit update destroy fetch_curl_code]
+  include VariableLister
+  before_action :set_endpoint, only: %i[ show edit update destroy fetch_curl_code variables]
 
   # GET /endpoints or /endpoints.json
   def index

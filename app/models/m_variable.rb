@@ -1,0 +1,2 @@
+class MVariable < ApplicationRecord
+end

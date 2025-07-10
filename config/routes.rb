@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       end
       member do
         get "fetch_curl_code"
+        get "variables"
       end
       resources :responses, shallow: true do
         resources :expressions, shallow: true

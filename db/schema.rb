@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_27_000400) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_10_035249) do
   create_table "endpoints", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "path"
@@ -42,6 +42,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_27_000400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["response_id"], name: "index_headers_on_response_id"
+  end
+
+  create_table "m_variables", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "value_type"
+    t.integer "int_value"
+    t.decimal "decimal_value", precision: 10
+    t.text "text_value"
+    t.string "variable_holder_type"
+    t.integer "variable_holder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["variable_holder_type", "variable_holder_id"], name: "idx_on_variable_holder_type_variable_holder_id_8892839268"
   end
 
   create_table "plain_responses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -13,6 +13,9 @@ module EndpointsHelper
     unless COLLECTION_ACTIONS.include?(action)
       links << KeyValue.new("Endpoints", project_endpoints_path(project_id: project.id))
     end
+    if action == "variables"
+      links << KeyValue.new(@endpoint.name, edit_endpoint_path(@endpoint))
+    end
     links
   end
 
@@ -23,6 +26,9 @@ module EndpointsHelper
     end
     if action == "new"
       return "New endpoint"
+    end
+    if action == "variables"
+      return "Variables"
     end
     @endpoint.name
   end
