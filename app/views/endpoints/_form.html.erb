@@ -58,8 +58,12 @@
     </div>
   </div>
   <div class="flex flex-row space-x-5 items-center mt-5">
-    <a>Available variables:</a>
+    <a>Available path variables:</a>
     <div class="flex flex-row space-x-4" data-path-params-target="list"></div>
+  </div>
+  <div class="flex flex-row space-x-5 items-center mt-5">
+    <a>Endpoint variables: 1(placeholder)</a>
+    <%= link_to "Edit variables", variables_endpoint_path(id: endpoint.id), class: "btn-primary rounded-lg py-3 px-5 font-medium" %>
   </div>
   <turbo-frame id="responses">
     <div class="flex flex-row justify-between items-center">

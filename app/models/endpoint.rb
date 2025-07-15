@@ -1,5 +1,6 @@
 class Endpoint < ApplicationRecord
   include NameSequenciable
+  include VariableHolder
   belongs_to :project
   has_many :responses, autosave: true, dependent: :destroy
   accepts_nested_attributes_for :responses

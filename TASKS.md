@@ -19,8 +19,10 @@
   - ~~Implement autosave~~
   - ~~Add status code to the call controller~~
 - Add variables
-  - Design the model. Should be able to belong to a project or to an endpoint
+  - ~~Design the model. Should be able to belong to a project or to an endpoint~~
   - Add variables to the endpoint view
   - Validate that the variables can't be repeated, verify in the project as well
 - Add the variables to the conditions
+- Add an admin api endpoint to configure stuff
+  - Add an endpoint to set a variable.
 - ~~Fix code box not set to dark mode when initiated in dark mode.~~

@@ -45,15 +45,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_10_035249) do
   end
 
   create_table "m_variables", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
     t.string "value_type"
     t.integer "int_value"
     t.decimal "decimal_value", precision: 10
     t.text "text_value"
     t.string "variable_holder_type"
-    t.integer "variable_holder_id"
+    t.bigint "variable_holder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["variable_holder_type", "variable_holder_id"], name: "idx_on_variable_holder_type_variable_holder_id_8892839268"
+    t.index ["variable_holder_type", "variable_holder_id"], name: "index_m_variables_on_variable_holder"
   end
 
   create_table "plain_responses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
