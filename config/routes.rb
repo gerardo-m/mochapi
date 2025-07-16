@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :m_variables
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   namespace :api do

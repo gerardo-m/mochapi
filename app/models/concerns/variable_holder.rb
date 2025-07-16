@@ -3,7 +3,7 @@ module VariableHolder
 
   included do
     @@m_variable_holder_parents = []
-    has_many :m_variables
+    has_many :m_variables, as: :variable_holder, dependent: :destroy
 
     def variables
       my_variables = inherited_variables
@@ -28,6 +28,10 @@ module VariableHolder
         end
       end
       all_variables
+    end
+
+    def own_variables
+      self.m_variables
     end
   end
 
