@@ -7,15 +7,13 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Variables</h1>
-    <%= link_to "Add response", new_m_variable_path(), class: "btn-primary rounded-lg py-3 px-5 font-medium", data: {"turbo-stream": true} %>
+    <%= link_to "Add response", new_m_variable_path(variable_holder_type: controller_name.classify, variable_holder_id: @model_instance.id), class: "btn-primary rounded-lg py-3 px-5 font-medium", data: {"turbo-stream": true} %>
   </div>
   <turbo-frame id="variables">
     <div class="min-w-full flex flex-col py-5 space-y-5">
       <h2 class="font-bold text-2xl"><%= controller_name.classify %> variables</h2>
       <% @own_variables.each do |variable|%>
-        <div class="flex flex-row px-5 border-2 border-blue-200 rounded-2xl">
-          <%= render 'item'%>
-        </div>
+        <%= render 'm_variables/item', m_variable: variable %>
       <% end%>
     </div>
   </turbo-frame>
