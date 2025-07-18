@@ -24,7 +24,6 @@ class ResponsesController < ApplicationController
         format.json { render :show, status: :ok, location: @response }
         format.turbo_stream { flash.now[:notice] = "Response was successfully saved." }
       else
-        puts @response.errors
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @response.errors, status: :unprocessable_entity }
       end

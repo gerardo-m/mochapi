@@ -47,7 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_10_035249) do
   create_table "m_variables", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "value_type"
-    t.integer "int_value"
+    t.integer "integer_value"
     t.decimal "decimal_value", precision: 10
     t.text "text_value"
     t.string "variable_holder_type"

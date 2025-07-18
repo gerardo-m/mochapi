@@ -21,13 +21,17 @@ export default class extends Controller {
 
   initialize() {
     this.debouncedSubmit = this.debounce(() => {
-      const nValue = this.textTarget.textContent;
-      this.hinputTarget.value = nValue;
+      if (this.hasHinputTarget){
+        const nValue = this.textTarget.textContent;
+        this.hinputTarget.value = nValue;
+      }
+      console.log("this");
       this.handleTextareaSubmit(this.textTarget);
     }, 2000);
   }
 
   connect() {
+    console.log("connected");
   }
 
   handleTextareaSubmit(textarea) {
