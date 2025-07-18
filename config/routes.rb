@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :projects do
+    member do
+      get "variables"
+    end
     resources :endpoints, shallow: true do
       collection do
         get "fetch_path_params"

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show edit update destroy ]
+  include VariableLister
+  before_action :set_project, only: %i[ show edit update destroy variables ]
 
   # GET /projects or /projects.json
   def index

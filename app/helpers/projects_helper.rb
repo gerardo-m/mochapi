@@ -9,15 +9,22 @@ module ProjectsHelper
     if action == "new"
       return "New project"
     end
+    if action == "variables"
+      return "Variables"
+    end
     @project.name
   end
 
   def breadcrumb_links
     action = params[:action]
+    links = []
     unless COLLECTION_ACTIONS.include?(action)
-      return [ KeyValue.new("Projects", projects_path) ]
+      links << KeyValue.new("Projects", projects_path)
     end
-    []
+    if action == "variables"
+      links << KeyValue.new(@project.name, edit_project_path(@project))
+    end
+    links
   end
 
   def is_new_record?

@@ -2,7 +2,7 @@
 
 one:
   value_type: MyString
-  int_value: 1
+  integer_value: 1
   decimal_value: 9.99
   text_value: MyText
   variable_holder_type: MyString
@@ -10,7 +10,7 @@ one:
 
 two:
   value_type: MyString
-  int_value: 1
+  integer_value: 1
   decimal_value: 9.99
   text_value: MyText
   variable_holder_type: MyString

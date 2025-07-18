@@ -26,3 +26,4 @@
 - Add an admin api endpoint to configure stuff
   - Add an endpoint to set a variable.
 - ~~Fix code box not set to dark mode when initiated in dark mode.~~
+- Fix ValueInterchangeable to work the same as VariableHolder with class instance variables

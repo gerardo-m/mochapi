@@ -37,5 +37,13 @@
     <%= link_to "Edit endpoints", project_endpoints_path(project_id: project.id), class: "btn-primary rounded-lg py-2 px-5 block font-medium" %>
   </div>
 
+  <div class="flex flex-row items-center justify-between border-t-2 pt-5 my-5">
+    <div class= "w-2/3 flex flex-row">
+      <strong class="block font-medium mb-1 w-1/2">Variables:</strong>
+      <div class="w-1/2"><%= project.variables.count %></div>
+    </div>
+    <%= link_to "Edit variables", variables_project_path(id: project.id), class: "btn-primary rounded-lg py-2 px-5 block font-medium" %>
+  </div>
+
   
 <% end %>
