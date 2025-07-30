@@ -29,7 +29,7 @@ module VariableHolder
 
     def all_inherited_variables
       all_variables = []
-      singleton_class.m_variable_holder_parents.each do |v_holder|
+      self.class.m_variable_holder_parents.each do |v_holder|
         actual_parent = self.send(v_holder)
         all_variables.concat(actual_parent.m_variables)
       end

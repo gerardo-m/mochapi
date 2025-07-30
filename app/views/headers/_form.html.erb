@@ -17,11 +17,11 @@
     </div>
     <div class="flex flex-row justify-end space-x-2">
       <%= form.button nil, class: "stroke-green-600 fill-green-600", title: "Accept" do %>
-        <%= render 'components/ok_icon_button', size: "1.5rem" %>
+        <%= render 'components/icons/ok_icon', size: "1.5rem" %>
       <% end%>
       <% if is_new_header %>
         <%= form.button nil, formmethod: :delete, class: "stroke-red-600 fill-red-600", title: "Cancel" do %>
-          <%= render 'components/cancel_icon_button', size: "1.5rem" %>
+          <%= render 'components/cancel_icon', size: "1.5rem" %>
         <% end%>
       <% end%>
     </div>

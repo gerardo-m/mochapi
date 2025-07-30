@@ -8,7 +8,7 @@ class MVariable < ApplicationRecord
 
   def self.create_default(variable_holder_type, variable_holder_id)
     new_m_variable = MVariable.new
-    new_m_variable.name = next_titleized_name(:name)
+    new_m_variable.name = next_titleized_name(:name, variable_holder_type: variable_holder_type, variable_holder_id: variable_holder_id)
     new_m_variable.value_type = "Text"
     new_m_variable.text_value = "Value"
     new_m_variable.variable_holder_type = variable_holder_type
