@@ -16,6 +16,13 @@ class MVariable < ApplicationRecord
     new_m_variable
   end
 
+  def create_copy_for(variable_holder)
+    new_m_variable = self.dup
+    new_m_variable.variable_holder_id = variable_holder.id
+    new_m_variable.variable_holder_type = variable_holder.class.name
+    new_m_variable
+  end
+
   def value
     if self.value_type == "Integer"
       return self.integer_value

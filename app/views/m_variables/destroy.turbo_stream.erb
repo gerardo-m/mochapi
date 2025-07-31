@@ -1,3 +1,10 @@
 <turbo-stream action="remove" target="<%= dom_id @m_variable%>">
 
 </turbo-stream>
+<% unless @inherited_variable.nil? %>
+  <turbo-stream action="append" target="inherited">
+    <template>
+      <%= render 'm_variables/inherited_item', m_variable: @inherited_variable%>
+    </template>
+  </turbo-stream>
+<% end%>

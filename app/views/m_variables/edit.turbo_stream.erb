@@ -1,0 +1,7 @@
+<turbo-stream action="remove" target="<%= dom_id @m_variable%>">
+</turbo-stream>
+<turbo-stream action="append" target="variables">
+  <template>
+    <%= render 'edit_item', m_variable: @new_m_variable%>
+  </template>
+</turbo-stream>

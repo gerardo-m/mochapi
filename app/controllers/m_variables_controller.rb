@@ -8,6 +8,9 @@ class MVariablesController < ApplicationController
   end
 
   def edit
+    set_variable_holder
+    @new_m_variable = @m_variable.create_copy_for(@variable_holder)
+    @new_m_variable.save!
   end
 
   def update
@@ -15,13 +18,22 @@ class MVariablesController < ApplicationController
   end
 
   def destroy
+    variable_holder = @m_variable.variable_holder
     @m_variable.destroy!
+    @inherited_variable = variable_holder.inherited_variables.select { |v| v.name.strip == @m_variable.name.strip }.first
+    @model_instance = @inherited_variable.variable_holder
   end
 
   protected
 
   def set_m_variable
     @m_variable = MVariable.find(params.expect(:id))
+  end
+
+  def set_variable_holder
+    model_type = params.expect(:variable_holder_type)
+    model_constant = model_type.classify.constantize
+    @variable_holder = model_constant.find(params.expect(:variable_holder_id))
   end
 
   def m_variables_params
