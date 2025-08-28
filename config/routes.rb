@@ -25,6 +25,13 @@ Rails.application.routes.draw do
     match ":project/*apiurl", to: "calls#handle_call", via: :all
   end
 
+  namespace :admin do
+    namespace :api do
+      match "info/:project/*apiurl", to: "info#get_info", via: :get
+      match "variables/project/:project_id", to: "m_variables#set_project_variable", via: :post
+    end
+  end
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

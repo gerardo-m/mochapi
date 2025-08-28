@@ -1,5 +1,7 @@
 module Api
   class CallsController < ApiController
+    include UrlMatcher
+
     def initialize
     end
 
@@ -19,28 +21,6 @@ module Api
     end
 
     protected
-
-    def match_endpoint(project, method, apiurl)
-      project.endpoints.each do |endpoint|
-        next unless endpoint.method == method
-        template = Addressable::Template.new(endpoint.path)
-        match = template.match(apiurl)
-        if match.present?
-          mochapi_request = build_mochapi_request(match)
-          return endpoint, mochapi_request
-        end
-      end
-      return nil, nil
-    end
-
-    def build_mochapi_request(path_params)
-      mochapi_request = MochapiRequest.new
-      mochapi_request.headers = request.headers
-      mochapi_request.path_parameters = path_params
-      mochapi_request.query_parameters = request.query_parameters
-      mochapi_request.request_parameters = request.request_parameters
-      mochapi_request
-    end
 
     def handle_endpoint(endpoint, mochapi_request)
       chosen_response = choose_response(endpoint, mochapi_request)

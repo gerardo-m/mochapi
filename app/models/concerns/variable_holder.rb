@@ -49,6 +49,10 @@ module VariableHolder
     def own_variables
       self.m_variables
     end
+
+    def get_or_create_variable(name)
+      self.m_variables.find_or_create_by(name: name)
+    end
   end
 
   class_methods do
