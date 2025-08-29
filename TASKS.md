@@ -33,3 +33,4 @@
 - Implement the URL preffix in the url matching.
 - ~~Fix security vulnerability in app/controllers/m_variables_controller.rb~~
 - Disallow spaces in variable names
+- Investigate error when deleting project variable.

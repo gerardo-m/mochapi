@@ -33,6 +33,13 @@ class Expression < ApplicationRecord
     send(m_name, mochapi_request)
   end
 
+  def parent_conditionable
+    if conditionable.is_a?(Expression)
+      return conditionable.parent_conditionable
+    end
+    conditionable
+  end
+
   private
 
   def is_numeric?(value)
@@ -45,6 +52,9 @@ class Expression < ApplicationRecord
     end
     if operand1_type == "header"
       return mochapi_request.headers.include?(operand1_val)
+    end
+    if operand1_type == "variable"
+      return parent_conditionable.endpoint.variables.select { |v| v.name.strip == operand1_val.strip }.first.present?
     end
     false
   end
