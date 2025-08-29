@@ -28,7 +28,8 @@ Rails.application.routes.draw do
   namespace :admin do
     namespace :api do
       match "info/:project/*apiurl", to: "info#get_info", via: :get
-      match "variables/project/:project_id", to: "m_variables#set_project_variable", via: :post
+      match "project/:project_id/variables", to: "m_variables#set_project_variable", via: :post
+      match "endpoint/:endpoint_id/variables", to: "m_variables#set_endpoint_variable", via: :post
     end
   end
 

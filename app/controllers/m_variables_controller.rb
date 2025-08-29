@@ -32,6 +32,7 @@ class MVariablesController < ApplicationController
 
   def set_variable_holder
     model_type = params.expect(:variable_holder_type)
+    return @variable_holder = nil unless VariableHolder.valid_classes.include?(model_type)
     model_constant = model_type.classify.constantize
     @variable_holder = model_constant.find(params.expect(:variable_holder_id))
   end

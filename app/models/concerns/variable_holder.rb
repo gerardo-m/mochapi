@@ -67,6 +67,10 @@ module VariableHolder
     def m_variable_holder_parents
       @m_variable_holder_parents ||= []
     end
+
+    def valid_classes
+      [ "Project", "Endpoint" ]
+    end
   end
 
   protected

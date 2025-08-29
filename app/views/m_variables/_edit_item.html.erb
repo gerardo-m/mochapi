@@ -12,7 +12,10 @@
         <%= form.select :value_type, options_from_collection_for_select(MVariable::VALUE_TYPES, :to_s, :to_s, m_variable.value_type), 
           {}, { onchange: 'this.form.requestSubmit();'} %>
       </div>
-      <% value_sym = "#{m_variable.value_type.downcase}_value".to_sym %>
+      <%
+        m_variable.value_type ||= MVariable::VALUE_TYPES.first
+        value_sym = "#{m_variable.value_type.downcase}_value".to_sym 
+      %>
       <div class="flex flex-col" data-controller="text-autosave">
         <%= form.label value_sym, "Value" %>
         <%= form.text_field value_sym, { data: {"text-autosave-target" => "text", action: "keyup->text-autosave#debounceSubmit" }} %>

@@ -4,7 +4,9 @@ class MVariable < ApplicationRecord
   attr_accessor :value
   belongs_to :variable_holder, polymorphic: true
 
-  VALUE_TYPES = [ "Integer", "Text", "Decimal" ]
+  before_validation :assign_defaults
+
+  VALUE_TYPES = [ "Text", "Integer", "Decimal" ]
 
   def self.create_default(variable_holder_type, variable_holder_id)
     new_m_variable = MVariable.new
@@ -34,5 +36,19 @@ class MVariable < ApplicationRecord
     self.integer_value
   end
 
+  def assign_value(new_value)
+    if self.value_type == "Integer"
+      self.integer_value = new_value
+    elsif self.value_type == "Text"
+      self.text_value = new_value
+    elsif self.value_type == "Decimal"
+      self.decimal_value = new_value
+    end
+  end
+
   protected
+
+  def assign_defaults
+    self.value_type ||= VALUE_TYPES.first
+  end
 end
