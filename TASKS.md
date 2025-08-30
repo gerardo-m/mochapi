@@ -34,5 +34,5 @@
 - Fix ValueInterchangeable to work the same as VariableHolder with class instance variables.
 - Implement the URL preffix in the url matching.
 - ~~Fix security vulnerability in app/controllers/m_variables_controller.rb~~
-- Disallow spaces in variable names
-- Investigate error when deleting project variable.
+- ~~Disallow spaces in variable names~~
+- ~~Investigate error when deleting project variable.~~

@@ -21,7 +21,7 @@ class MVariablesController < ApplicationController
     variable_holder = @m_variable.variable_holder
     @m_variable.destroy!
     @inherited_variable = variable_holder.inherited_variables.select { |v| v.name.strip == @m_variable.name.strip }.first
-    @model_instance = @inherited_variable.variable_holder
+    @model_instance = @inherited_variable.variable_holder unless @inherited_variable.nil?
   end
 
   protected
