@@ -25,13 +25,12 @@ export default class extends Controller {
         const nValue = this.textTarget.textContent;
         this.hinputTarget.value = nValue;
       }
-      console.log("this");
       this.handleTextareaSubmit(this.textTarget);
-    }, 2000);
+    }, 1000);
   }
 
   connect() {
-    console.log("connected");
+    
   }
 
   handleTextareaSubmit(textarea) {

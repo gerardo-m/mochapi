@@ -18,11 +18,13 @@
   - ~~Add status code select to the view~~
   - ~~Implement autosave~~
   - ~~Add status code to the call controller~~
-- Add variables
+- ~~Add variables~~
   - ~~Design the model. Should be able to belong to a project or to an endpoint~~
   - ~~Add variables to the endpoint view~~
-  - Validate that the variables can't be repeated, verify in the project as well
-- Add the variables to the conditions
+  - ~~Validate that the variables can't be repeated, verify in the project as well~~
+- ~~Add the variables to the conditions~~
+  - ~~Add variable to is_present?~~
+  - ~~Add variable to is_number?~~
 - Add an admin api endpoint to configure stuff
   - ~~Add an info endpoint to get info from an url.~~
   - ~~Add an endpoint to set a variable.~~

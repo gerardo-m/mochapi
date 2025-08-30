@@ -1,0 +1,10 @@
+<%= turbo_stream.replace "name-error-#{@m_variable.id}" do %>
+<% end %>
+
+<%= turbo_stream.after "#{@m_variable.id}_m_variable_name" do %>
+  <div id="name-error-<%= @m_variable.id %>" class="text-red-500 text-sm mt-1">
+    <% @m_variable.errors[:name].each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  </div>
+<% end%>

@@ -67,6 +67,7 @@ class Expression < ApplicationRecord
     value_to_verify = nil
     value_to_verify = mochapi_request.path_parameters[operand1_val] if operand1_type == "param"
     value_to_verify = mochapi_request.headers[operand1_val] if operand1_type == "header"
+    value_to_verify = parent_conditionable.endpoint.variables.select { |v| v.name.strip == operand1_val.strip }.first.value if operand1_type == "variable"
     is_numeric?(value_to_verify)
   end
 
