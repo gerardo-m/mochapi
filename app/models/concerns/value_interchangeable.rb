@@ -2,7 +2,7 @@ module ValueInterchangeable
   extend ActiveSupport::Concern
 
   included do
-    @@remembered_values_map = {}
+    # @@remembered_values_map = {}
 
     has_many :remembered_values, as: :value_interchangeable
     before_update :remember_values
@@ -10,7 +10,7 @@ module ValueInterchangeable
     private
 
     def remember_values
-      @@remembered_values_map.each do |control_attr, value_attrs|
+      self.class.remembered_values_map.each do |control_attr, value_attrs|
         m= "#{control_attr}_changed?"
         next unless send(m)
         old_control_attribute_value = send("#{control_attr}_was")
@@ -42,12 +42,22 @@ module ValueInterchangeable
     def remember_value(control_attribute, value_attribute)
       control_attribute = control_attribute.to_sym if control_attribute.is_a? String
       throw ArgumentError("control_attribute is not a String nor a Symbol") unless control_attribute.is_a? Symbol
-      if @@remembered_values_map[control_attribute].nil?
-        @@remembered_values_map[control_attribute] = []
+      # if @@remembered_values_map[control_attribute].nil?
+      #   @@remembered_values_map[control_attribute] = []
+      # end
+      # unless @@remembered_values_map[control_attribute].include?(value_attribute)
+      #   @@remembered_values_map[control_attribute] << value_attribute
+      # end
+      if remembered_values_map[control_attribute].nil?
+        remembered_values_map[control_attribute] = []
       end
-      unless @@remembered_values_map[control_attribute].include?(value_attribute)
-        @@remembered_values_map[control_attribute] << value_attribute
+      unless remembered_values_map[control_attribute].include?(value_attribute)
+        remembered_values_map[control_attribute] << value_attribute
       end
+    end
+
+    def remembered_values_map
+      @remembered_values_map ||= {}
     end
   end
 end

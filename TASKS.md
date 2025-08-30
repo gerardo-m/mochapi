@@ -31,7 +31,7 @@
   - ~~Implement set project variable via API.~~
   - ~~Implement set endpoint variable via API.~~
 - ~~Fix code box not set to dark mode when initiated in dark mode.~~
-- Fix ValueInterchangeable to work the same as VariableHolder with class instance variables.
+- ~~Fix ValueInterchangeable to work the same as VariableHolder with class instance variables.~~
 - Implement the URL preffix in the url matching.
 - ~~Fix security vulnerability in app/controllers/m_variables_controller.rb~~
 - ~~Disallow spaces in variable names~~
