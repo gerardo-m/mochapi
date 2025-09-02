@@ -13,6 +13,11 @@ class PlainResponse < ApplicationRecord
         n_content = PlainResponseParser.replace_variable(content, var, mochapi_request.headers[var])
         next
       end
+      existing_variable = self.response.endpoint.variables.select { |v| v.name.strip == var.strip }.first
+      if existing_variable.present?
+        n_content = PlainResponseParser.replace_variable(content, var, existing_variable.value)
+        next
+      end
     end
     { plain: n_content, status: self.response.status_code }
   end

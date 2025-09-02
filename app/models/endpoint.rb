@@ -17,6 +17,26 @@ class Endpoint < ApplicationRecord
     new_endpoint
   end
 
+  def complete_path
+    return path if project.url_preffix.blank? or path.blank?
+    n_path = path.dup
+    n_url_preffix = project.url_preffix.dup
+    if n_path.start_with?("/")
+      n_path = n_path[1..]
+    end
+    if n_path.end_with?("/")
+      n_path = n_path[0..-2]
+    end
+    # do the same for the url preffix
+    if n_url_preffix.start_with?("/")
+      n_url_preffix = n_url_preffix[1..]
+    end
+    if n_url_preffix.end_with?("/")
+      n_url_preffix = n_url_preffix[0..-2]
+    end
+    "#{n_url_preffix}/#{n_path}"
+  end
+
   def default_response
     self.responses.first
   end

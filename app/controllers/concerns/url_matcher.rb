@@ -12,7 +12,9 @@ module UrlMatcher
     def match_endpoint(project, method, apiurl)
       project.endpoints.each do |endpoint|
         next unless endpoint.method == method
-        template = Addressable::Template.new(endpoint.path)
+        path = endpoint.complete_path
+        return if path.blank?
+        template = Addressable::Template.new(endpoint.complete_path)
         match = template.match(apiurl)
         if match.present?
           mochapi_request = build_mochapi_request(match)
