@@ -3,6 +3,35 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.0] - 2025-09-02
+
+### Added
+
+- Status code now can be set for individual responses.
+- Variables:
+  - Can be Integer, Decimal or Text
+  - Can be defined at project or endpoint level.
+  - Endpoints inherit project variables.
+  - Endpoints can overwrite project variables.
+  - Variables can be used as the parameters to set conditions
+  or content in responses.
+- Admin API
+  - Info endpoint to get ids from the project and endpoint.
+  - Endpoints to set variables.
+  - Endpoints to delete variables.
+
+### Changed
+
+- Url preffix from project is now applied when matching 
+urls
+
+### Fixed
+
+- Code box, not starting in dark mode when the site started in
+dark mode
+- The remember value used for the condition values fixed.
+- Removed unused code references
+
 ## [0.4.0] - 2025-06-15
 
 ### Added

@@ -41,6 +41,34 @@ module Admin
         end
       end
 
+      def delete_project_variable
+        project = Project.where(id: params[:project_id]).first
+        if project.nil?
+          return render json: { error: 404, error_message: "Not found",
+            message: "Project with id #{params[:project_id]} not found" }, status: :not_found
+        end
+        variable_to_delete = project.own_variables.where(name: params[:name]).first
+        if variable_to_delete.nil?
+          return render json: { error: 404, error_message: "Not found",
+            message: "Variable with name #{params[:name]} not found" }, status: :not_found
+        end
+        variable_to_delete.destroy!
+      end
+
+      def delete_endpoint_variable
+        endpoint = Endpoint.where(id: params[:endpoint_id]).first
+        if endpoint.nil?
+          return render json: { error: 404, error_message: "Not found",
+            message: "Endpoint with id #{params[:endpoint_id]} not found" }, status: :not_found
+        end
+        variable_to_delete = endpoint.own_variables.where(name: params[:name]).first
+        if variable_to_delete.nil?
+          return render json: { error: 404, error_message: "Not found",
+            message: "Variable with name #{params[:name]} not found" }, status: :not_found
+        end
+        variable_to_delete.destroy!
+      end
+
       protected
 
       ### returns <bool>, <result>

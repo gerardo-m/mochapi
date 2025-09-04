@@ -34,7 +34,7 @@
 
       <div class="my-2 w-2/3">
         <%= form.label :path %>
-        <%= form.text_field :path, class: "block shadow-sm rounded-md border border-gray-400 outline-hidden px-3 py-2 mt-2 w-full", "data-path-params-target"=> "source", "data-action"=>"path-params#pathEdited" %>
+        <%= form.text_field :path, class: "block shadow-sm rounded-md border border-gray-400 outline-hidden px-3 py-2 mt-2 w-full", "data-path-params-target"=> "source", "data-action"=>"path-params#debounceSubmit" %>
       </div>
     </div>
     <div class="flex flex-row">
@@ -62,7 +62,7 @@
     <div class="flex flex-row space-x-4" data-path-params-target="list"></div>
   </div>
   <div class="flex flex-row space-x-5 items-center mt-5">
-    <a>Endpoint variables: 1(placeholder)</a>
+    <a>Endpoint variables: </a>
     <%= link_to "Edit variables", variables_endpoint_path(id: endpoint.id), class: "btn-primary rounded-lg py-3 px-5 font-medium" %>
   </div>
   <turbo-frame id="responses">

@@ -37,3 +37,7 @@
 - ~~Fix security vulnerability in app/controllers/m_variables_controller.rb~~
 - ~~Disallow spaces in variable names~~
 - ~~Investigate error when deleting project variable.~~
+
+- ~~Implement delete project and variable via API~~
+- ~~Fix error when adding a new header~~
+- ~~Fix endpoint path ajax call to update the curl and path variables~~

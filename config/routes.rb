@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       match "info/:project/*apiurl", to: "info#get_info", via: :get
       match "project/:project_id/variables", to: "m_variables#set_project_variable", via: :post
       match "endpoint/:endpoint_id/variables", to: "m_variables#set_endpoint_variable", via: :post
+      match "project/:project_id/variables/:name", to: "m_variables#delete_project_variable", via: :delete
+      match "endpoint/:endpoint_id/variables/:name", to: "m_variables#delete_endpoint_variable", via: :delete
     end
   end
 

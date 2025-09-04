@@ -18,7 +18,9 @@ module Admin
         info = {
           url: params[:apiurl],
           project_id: project.id,
-          endpoint_id: endpoint.id
+          endpoint_id: endpoint.id,
+          project_variables_url: "/admin/api/project/#{project.id}/variables",
+          endpoint_variables_url: "/admin/api/endpoint/#{endpoint.id}/variables"
         }
         render json: info
       end
