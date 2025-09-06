@@ -48,7 +48,7 @@ generate a secret_base_key for the rails app.
 
 The docker-compose.yml file is set to deploy the app in the port 80 and the 
 database in the port 3306, if for any reason any of those ports are already 
-taken, edit the file
+taken, edit the file as follows:
 
 ```yml
 app:
@@ -110,6 +110,23 @@ sudo docker run --env-file .env \
 That's it, your mochapi instance should be up and running on the port you exposed in the last step
 
 ## Dev Setup
+
+```
+Ruby version: 3.3.6
+Rails version: 8.0.2.1
+```
+
+As any rails application to run it locally just run:
+
+```sh
+rails s
+```
+
+To enable hot reload for tailwind you need to run the following in a separate shell:
+
+```sh
+rails tailwindcss:watch
+```
 
 ## Usage
 

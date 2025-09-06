@@ -1,15 +1,12 @@
 ## ROADMAP
 
-### v0.4.0
-
-- Support headers
-- Highlight response's code
-- Dark mode
-
 ### v1.0.0
 
-- Add variables by project
+- More condition types
+- Nested conditions
+- More options for admin API
 - Proper field validations
+- Finish documentation
 
 ### Eventually
 
