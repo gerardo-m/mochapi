@@ -14,6 +14,7 @@ class MVariablesController < ApplicationController
   end
 
   def update
+    @previous_value_type = @m_variable.value_type
     @m_variable.update(m_variables_params)
   end
 
@@ -39,6 +40,6 @@ class MVariablesController < ApplicationController
   end
 
   def m_variables_params
-    params.expect(m_variable: [ :id, :name, :value_type, :integer_value, :decimal_value, :text_value ])
+    params.expect(m_variable: [ :id, :name, :value_type, :integer_value, :decimal_value, :text_value, :boolean_value ])
   end
 end

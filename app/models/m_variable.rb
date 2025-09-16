@@ -8,7 +8,7 @@ class MVariable < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { scope: [ :variable_holder_type, :variable_holder_id ] }
 
-  VALUE_TYPES = [ "Text", "Integer", "Decimal" ]
+  VALUE_TYPES = [ "Text", "Integer", "Decimal", "Boolean" ]
 
   def self.create_default(variable_holder_type, variable_holder_id)
     new_m_variable = MVariable.new

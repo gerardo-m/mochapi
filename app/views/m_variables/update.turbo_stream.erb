@@ -2,9 +2,22 @@
 <% end %>
 
 <%= turbo_stream.after "#{@m_variable.id}_m_variable_name" do %>
+  <% if @m_variable.errors[:name].any? %>
   <div id="name-error-<%= @m_variable.id %>" class="text-red-500 text-sm mt-1">
     <% @m_variable.errors[:name].each do |error| %>
-      <p><%= error %></p>
-    <% end %>
-  </div>
+        <p><%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% end%>
+
+<%= turbo_stream.replace "#{@m_variable.id}_m_variable_#{@previous_value_type.downcase}_value" do %>
+  <%
+    value_sym = "#{@m_variable.value_type.downcase}_value".to_sym 
+    if @m_variable.value_type == "Boolean"
+  %>
+    <%= select_tag "m_variable[#{value_sym}]", options_for_select([true, false], @m_variable.boolean_value), { id: "#{@m_variable.id}_m_variable_#{@m_variable.value_type.downcase}_value", onchange: 'this.form.requestSubmit();', class:"min-w-60"} %>
+  <% else %>
+    <%= text_field_tag "m_variable[#{value_sym}]", @m_variable.send(value_sym), { id: "#{@m_variable.id}_m_variable_#{@m_variable.value_type.downcase}_value", data: {"text-autosave-target" => "text", action: "keyup->text-autosave#debounceSubmit" }} %>
+  <% end %>
 <% end%>

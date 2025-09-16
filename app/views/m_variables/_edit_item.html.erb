@@ -31,7 +31,11 @@
       %>
       <div class="flex flex-col" data-controller="text-autosave">
         <%= form.label value_sym, "Value" %>
-        <%= form.text_field value_sym, { data: {"text-autosave-target" => "text", action: "keyup->text-autosave#debounceSubmit" }} %>
+        <% if m_variable.value_type == "Boolean" %>
+          <%= form.select value_sym, options_for_select([true, false], m_variable.boolean_value),{}, { onchange: 'this.form.requestSubmit();', class:"min-w-60"} %>
+        <% else %>
+          <%= form.text_field value_sym, { data: {"text-autosave-target" => "text", action: "keyup->text-autosave#debounceSubmit" }} %>
+        <% end %>
       </div>
     <%end%>
   </div>
