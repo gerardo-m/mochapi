@@ -1,6 +1,5 @@
 module Expressions
   class Operation
-
     # Detemines the values that the operands can be or return
     OPERAND_RETURN_TYPES = [ :boolean, :string, :number ]
     # Determines the form that the operands can be rendered in
@@ -45,7 +44,6 @@ module Expressions
     end
 
     class << self
-
       # Sets the name of the operation as provided by the subclass
       def main_name(name)
         @main_name ||= name
@@ -107,7 +105,7 @@ module Expressions
 
       # Creates a new Operation instance based on the operation name
       def create_new(operation_name)
-        operation_classes = Expressions::Operations.constants.select { |c| Expressions::Operations.const_get(c).is_a? Class}
+        operation_classes = Expressions::Operations.constants.select { |c| Expressions::Operations.const_get(c).is_a? Class }
         operation_classes.each do |operation_class|
           operation_class = Expressions::Operations.const_get(operation_class)
           if operation_class.get_main_name == operation_name
@@ -121,7 +119,6 @@ module Expressions
       end
 
       protected
-      
     end
   end
 end

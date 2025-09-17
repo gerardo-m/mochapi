@@ -1,7 +1,6 @@
 module Expressions
   module Operations
     class IsPresent < Expressions::Operation
-
       main_name "IS_PRESENT"
       negation_name "IS_NOT_PRESENT"
       operands_count 1
@@ -9,7 +8,7 @@ module Expressions
       operand_form_types :name
 
       def is_met?(expression, mochapi_request)
-        present = is_present(expression.operand1_type, expression.operand1_val, 
+        present = is_present(expression.operand1_type, expression.operand1_val,
           expression.parent_conditionable.endpoint, mochapi_request)
         if is_negation?
           return !present
@@ -18,7 +17,7 @@ module Expressions
       end
 
       private
-      
+
       def is_present(operand_type, operand_val, endpoint, mochapi_request)
         if operand_type == "param"
           return mochapi_request.path_parameters.keys.include?(operand_val)

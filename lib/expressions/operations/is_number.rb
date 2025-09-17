@@ -8,7 +8,7 @@ module Expressions
       operand_form_types :name
 
       def is_met?(expression, mochapi_request)
-        number = is_number(expression.operand1_type, expression.operand1_val, 
+        number = is_number(expression.operand1_type, expression.operand1_val,
           expression.parent_conditionable.endpoint, mochapi_request)
         if is_negation?
           return !number

@@ -41,6 +41,4 @@ class Expression < ApplicationRecord
   end
 
   private
-
-  
 end
