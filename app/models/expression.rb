@@ -27,10 +27,10 @@ class Expression < ApplicationRecord
   end
 
   def is_met?(mochapi_request)
-    m_name = "#{operation.downcase}_met?"
-    # We probably need to log this or put a warning in this case
-    return false unless respond_to? m_name, true
-    send(m_name, mochapi_request)
+    # This will raise an error if the operation is invalid
+    # We probably need to log this or put a warning in that case
+    verifier = Expressions::Operation.create_new(operation.upcase)
+    verifier.is_met?(self, mochapi_request)
   end
 
   def parent_conditionable
@@ -42,36 +42,5 @@ class Expression < ApplicationRecord
 
   private
 
-  def is_numeric?(value)
-    Float(value) != nil rescue false
-  end
-
-  def is_present_met?(mochapi_request)
-    if operand1_type == "param"
-      return mochapi_request.path_parameters.keys.include?(operand1_val)
-    end
-    if operand1_type == "header"
-      return mochapi_request.headers.include?(operand1_val)
-    end
-    if operand1_type == "variable"
-      return parent_conditionable.endpoint.variables.select { |v| v.name.strip == operand1_val.strip }.first.present?
-    end
-    false
-  end
-
-  def is_not_present_met?(mochapi_request)
-    !is_present_met?(mochapi_request)
-  end
-
-  def is_a_number_met?(mochapi_request)
-    value_to_verify = nil
-    value_to_verify = mochapi_request.path_parameters[operand1_val] if operand1_type == "param"
-    value_to_verify = mochapi_request.headers[operand1_val] if operand1_type == "header"
-    value_to_verify = parent_conditionable.endpoint.variables.select { |v| v.name.strip == operand1_val.strip }.first.value if operand1_type == "variable"
-    is_numeric?(value_to_verify)
-  end
-
-  def is_not_a_number_met?(mochapi_request)
-    !is_a_number_met?(mochapi_request)
-  end
+  
 end
