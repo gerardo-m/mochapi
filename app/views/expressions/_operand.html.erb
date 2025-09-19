@@ -1,0 +1,19 @@
+<% op_val = "operand#{operand_number}_val" %>
+<% op_type = "operand#{operand_number}_type" %>
+<% op_form = "operand#{operand_number}_form" %>
+<div class="flex flex-col space-y-10">
+  <%= select_tag "expression[#{op_form}]", 
+    options_from_collection_for_select(expression.available_operand_forms, :to_s, :to_s, expression.operand1_form), 
+    {onchange: "this.form.requestSubmit();", id: "#{expression.id}_expression_#{op_form}"}  %>
+  <%= render "expressions/operands/#{expression.operand1_form }", 
+    expression: expression, op_val: op_val, op_type: op_type%>
+    <%
+=begin%>
+ <%= label_tag 'expression[operand1_type]', "Value: " %>
+    <%= select_tag 'expression[operand1_type]', options_from_collection_for_select(Constants::OPERAND_TYPES, :to_s, :to_s, expression.operand1_type), {onchange: "this.form.requestSubmit();"}  %>
+    <%= text_field_tag 'expression[operand1_val]', expression.operand1_val, {onchange: "this.form.requestSubmit();"}%> 
+<%
+=end%>
+
+  
+</div>

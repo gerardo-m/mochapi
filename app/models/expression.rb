@@ -33,6 +33,15 @@ class Expression < ApplicationRecord
     verifier.is_met?(self, mochapi_request)
   end
 
+  def available_operand_forms
+    @operation_handler ||= Expressions::Operation.create_new(operation.upcase)
+    @operation_handler.operand_form_types
+  end
+
+  def operand1_form
+    super || available_operand_forms.first
+  end
+
   def parent_conditionable
     if conditionable.is_a?(Expression)
       return conditionable.parent_conditionable

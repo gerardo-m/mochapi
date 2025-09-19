@@ -1,6 +1,6 @@
 <turbo-frame id="<%= dom_id expression%>">
   <div>
-    <%= form_with(model: expression, class: "contents flex flex-col space-y-5") do |form| %>
+    <%= form_with(model: expression, class: "contents flex flex-col space-y-5", namespace: "#{expression.id}") do |form| %>
       <div>
         <%= form.label :operation %>
         <%= form.select :operation, options_from_collection_for_select(Constants::EXPRESSION_OPERANDS.keys, :to_s, :to_s, expression.operation), 
@@ -9,10 +9,14 @@
     
       <div id="operands_<%= dom_id expression%>" >
         <% unless expression.operation.blank? %>
-          <%= render "expressions/operands/#{Constants::EXPRESSION_OPERANDS[expression.operation]}", expression: expression%>
+          <%
+=begin%>
+ <%= render "expressions/operands/#{Constants::EXPRESSION_OPERANDS[expression.operation]}", expression: expression%> 
+<%
+=end%>
+          <%= render "expressions/operand", expression: expression, operand_number: 1%>
         <% end%>
       </div>
-      
     <% end %>
   </div>
 </turbo-frame>

@@ -15,6 +15,6 @@ class ExpressionsController < ApplicationController
   end
 
   def expression_params
-    params.expect(expression: [ :operation, :operand1_type, :operand1_val, :operand2_type, :operand2_val ])
+    params.expect(expression: [ :operation, :operand1_type, :operand1_val, :operand2_type, :operand2_val, :operand1_form, :operand2_form ])
   end
 end

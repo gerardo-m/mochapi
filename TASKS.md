@@ -21,5 +21,7 @@
 - Improve Status code selector behavior in responses
   - When clicked it should select the content to replace when
   starting typing.
+- Fix info endpoint not searching any endpoint that doesn't use GET method
 - Fix curl command not taking into account the url preffix
 - Fix tab not working in variable name, probably because of whitespace being ignored
+- Fix operation in conditions not accepting blank value
