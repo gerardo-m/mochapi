@@ -1,5 +1,8 @@
 <div class="flex flex-row items-center space-x-5">
-  <%= label_tag 'expression[operand1_type]', "Value: " %>
-  <%= select_tag 'expression[operand1_type]', options_from_collection_for_select(Constants::OPERAND_TYPES, :to_s, :to_s, expression.operand1_type), {onchange: "this.form.requestSubmit();"}  %>
-  <%= text_field_tag 'expression[operand1_val]', expression.operand1_val, {onchange: "this.form.requestSubmit();"}%>
+  <%= label_tag "expression[#{op_type}]", "Value: ", {id: "#{expression.id}_expression_#{op_type}"} %>
+  <%= select_tag "expression[#{op_type}]", 
+    options_from_collection_for_select(expression.available_operand_types, :to_s, :to_s, expression.send(op_type)), 
+    {onchange: "this.form.requestSubmit();", id: "#{expression.id}_expression_#{op_type}"}  %>
+  <%= text_field_tag "expression[#{op_val}]", expression.send(op_val), 
+    {onchange: "this.form.requestSubmit();", id: "#{expression.id}_expression_#{op_val}"}%>
 </div>

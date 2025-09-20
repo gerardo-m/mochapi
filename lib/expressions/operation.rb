@@ -118,6 +118,16 @@ module Expressions
         raise ArgumentError, "Invalid operation name: #{operation_name}"
       end
 
+      def all
+        operations = []
+        Expressions::Operations.constants.select { |c| Expressions::Operations.const_get(c).is_a? Class }.map do |operation_class|
+          operation_class = Expressions::Operations.const_get(operation_class)
+          operations << operation_class.get_main_name
+          operations << operation_class.get_negation_name unless operation_class.get_negation_name.blank?
+        end
+        operations
+      end
+
       protected
     end
   end

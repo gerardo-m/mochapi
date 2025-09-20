@@ -10,12 +10,12 @@
   - Completely re-write the conditions feature
     - ~~Add a base expression operation class~~
     - ~~Add a class for every operation, the negation will be in the same class~~
-    - The concrete operation classes will contain info for the form rendering 
-    and what is allowed in every instance
+    - ~~The concrete operation classes will contain info for the form rendering 
+    and what is allowed in every instance~~
     - ~~The concrete operation will have the number of operands.~~
-    - Nested conditions will not yet be added, but should be taken into
-    consideration.
-  - Add functionality for IS_EQUAL operation
+    - ~~Nested conditions will not yet be added, but should be taken into
+    consideration.~~
+  - ~~Add functionality for IS_EQUAL operation~~
 - Add autosave to all fields in Editing Endpoint
 - Add autosave to all fields in Editing Project
 - Improve Status code selector behavior in responses

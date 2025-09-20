@@ -3,18 +3,16 @@
     <%= form_with(model: expression, class: "contents flex flex-col space-y-5", namespace: "#{expression.id}") do |form| %>
       <div>
         <%= form.label :operation %>
-        <%= form.select :operation, options_from_collection_for_select(Constants::EXPRESSION_OPERANDS.keys, :to_s, :to_s, expression.operation), 
+        <%= form.select :operation, options_from_collection_for_select(Expressions::Operation.all, :to_s, :to_s, expression.operation), 
           { include_blank: true }, { onchange: 'this.form.requestSubmit();'} %>
       </div>
     
-      <div id="operands_<%= dom_id expression%>" >
+      <div id="operands_<%= dom_id expression%>" class="flex flex-col space-y-5">
         <% unless expression.operation.blank? %>
-          <%
-=begin%>
- <%= render "expressions/operands/#{Constants::EXPRESSION_OPERANDS[expression.operation]}", expression: expression%> 
-<%
-=end%>
           <%= render "expressions/operand", expression: expression, operand_number: 1%>
+          <% if expression.has_operand2? %>
+            <%= render "expressions/operand", expression: expression, operand_number: 2%>
+          <% end %>
         <% end%>
       </div>
     <% end %>
