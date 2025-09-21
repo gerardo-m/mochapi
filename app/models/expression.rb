@@ -18,6 +18,8 @@ class Expression < ApplicationRecord
   remember_value :operand2_form, :operand2_type
   remember_value :operand2_form, :operand2_val
 
+  before_update :check_operands_changed
+
   # def form_type
   #   Constants::EXPRESSION_OPERANDS[operation]
   # end
@@ -60,6 +62,10 @@ class Expression < ApplicationRecord
     super || available_operand_forms.first
   end
 
+  def should_render_operands?
+    @render_operands
+  end
+
   def parent_conditionable
     if conditionable.is_a?(Expression)
       return conditionable.parent_conditionable
@@ -68,4 +74,15 @@ class Expression < ApplicationRecord
   end
 
   private
+
+  def check_operands_changed
+    return @render_operands = true if operand1_type_changed? || operand2_type_changed? || operation_changed?
+    if operand1_val_changed?
+      return @render_operands = true if operand1_type == "boolean"
+    end
+    if operand2_val_changed?
+      return @render_operands = true if operand2_type == "boolean"
+    end
+    @render_operands = false
+  end
 end

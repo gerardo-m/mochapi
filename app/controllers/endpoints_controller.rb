@@ -45,6 +45,7 @@ class EndpointsController < ApplicationController
       if @endpoint.update(endpoint_params)
         format.html { redirect_to project_endpoints_path(project_id: @endpoint.project_id), notice: "Endpoint was successfully saved." }
         format.json { render :show, status: :ok, location: project_endpoints_path(project_id: @endpoint.project_id) }
+        format.turbo_stream { flash.now[:notice] = "Endpoint was successfully saved." }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @endpoint.errors, status: :unprocessable_entity }

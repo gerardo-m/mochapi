@@ -8,9 +8,6 @@
   data-path-params-url-value="<%= fetch_path_params_project_endpoints_path( project_id: endpoint.project.id)%>"
   data-path-params-curl-url-value="<%= fetch_curl_code_endpoint_path(id: endpoint.id)%>">
   <%= form_with(model: endpoint, url: url, class: "contents") do |form| %>
-    <div class="inline float-right">
-      <%= form.submit "Save", class: "btn-primary rounded-lg py-3 px-5 font-medium cursor-pointer" %>
-    </div>
     
     <% if endpoint.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -27,20 +24,23 @@
     <%= form.hidden_field :id %>
     <div class="flex flex-row w-full space-x-4">
       
-      <div class="my-2 w-1/3">
+      <div class="my-2 w-1/3" data-controller="text-autosave">
         <%= form.label :name %>
-        <%= form.text_field :name, data: { "text-focus-target"=> "text"}, class: "block shadow-sm rounded-md border border-gray-400 outline-hidden px-3 py-2 mt-2 w-full" %>
+        <%= form.text_field :name, data: { "text-focus-target"=> "text", "text-autosave-target"=> "text", "action"=>"keyup->text-autosave#debounceSubmit"}, 
+          class: "block shadow-sm rounded-md border border-gray-400 outline-hidden px-3 py-2 mt-2 w-full" %>
       </div>
 
       <div class="my-2 w-2/3">
         <%= form.label :path %>
-        <%= form.text_field :path, class: "block shadow-sm rounded-md border border-gray-400 outline-hidden px-3 py-2 mt-2 w-full", "data-path-params-target"=> "source", "data-action"=>"path-params#debounceSubmit" %>
+        <%= form.text_field :path, class: "block shadow-sm rounded-md border border-gray-400 outline-hidden px-3 py-2 mt-2 w-full", 
+          "data-path-params-target"=> "source", "data-action"=>"path-params#debounceSubmit" %>
       </div>
     </div>
     <div class="flex flex-row">
       <div class="my-5 w-1/3">
         <%= form.label :method %>
-        <%= form.select :method, options_from_collection_for_select(Constants::SUPPORTED_METHODS, :to_s, :to_s, @endpoint.method),{}, class: "w-full" %>
+        <%= form.select :method, options_from_collection_for_select(Constants::SUPPORTED_METHODS, :to_s, :to_s, @endpoint.method),
+          {}, { onchange: 'this.form.requestSubmit();', class: "w-full", data: {action: "change->path-params#debounceSubmit"}}  %>
       </div>      
     </div>
     

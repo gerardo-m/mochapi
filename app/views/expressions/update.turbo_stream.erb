@@ -1,10 +1,12 @@
-<turbo-stream action="update" target="operands_<%= dom_id @expression%>">
-  <template>
-    <% unless @expression.operation.blank? %>
-      <%= render "expressions/operand", expression: @expression, operand_number: 1%>
-      <% if @expression.has_operand2? %>
-        <%= render "expressions/operand", expression: @expression, operand_number: 2%>
+<% if @expression.should_render_operands? %>
+  <turbo-stream action="update" target="operands_<%= dom_id @expression%>">
+    <template>
+      <% unless @expression.operation.blank? %>
+        <%= render "expressions/operand", expression: @expression, operand_number: 1%>
+        <% if @expression.has_operand2? %>
+          <%= render "expressions/operand", expression: @expression, operand_number: 2%>
+        <% end %>
       <% end %>
-    <% end %>
-  </template>
-</turbo-stream>
+    </template>
+  </turbo-stream>
+<% end %>
