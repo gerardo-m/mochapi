@@ -1,5 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
+// This controller will work only in input fields, not in textareas
+// If we want to use it in textareas, we need to modify the code to handle 
+// tabs and enter keys.
 export default class extends Controller {
   static targets = ["input"]
 
@@ -30,7 +33,7 @@ export default class extends Controller {
 
   preventWhitespace(event) {
     // Prevent space key and other whitespace characters
-    if (event.key === ' ' || event.key === 'Tab' ) {
+    if (event.key === ' ') {
       event.preventDefault()
     }
   }

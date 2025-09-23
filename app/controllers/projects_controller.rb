@@ -43,6 +43,7 @@ class ProjectsController < ApplicationController
       if @project.update(project_params)
         format.html { redirect_to projects_path, notice: "Project was successfully saved." }
         format.json { render :show, status: :ok, location: projects_path }
+        format.turbo_stream { flash.now[:notice] = "Project was successfully saved." }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @project.errors, status: :unprocessable_entity }

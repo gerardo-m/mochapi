@@ -33,6 +33,7 @@ class Expression < ApplicationRecord
   # end
 
   def is_met?(mochapi_request)
+    return true if operation.blank?
     # This will raise an error if the operation is invalid
     # We probably need to log this or put a warning in that case
     verifier = Expressions::Operation.create_new(operation.upcase)
