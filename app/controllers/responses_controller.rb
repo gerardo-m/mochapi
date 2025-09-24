@@ -1,5 +1,5 @@
 class ResponsesController < ApplicationController
-  before_action :set_response, only: %i[ show edit update destroy ]
+  before_action :set_response, only: %i[ show edit update destroy duplicate ]
 
   def index
   end
@@ -35,6 +35,10 @@ class ResponsesController < ApplicationController
   end
 
   def show
+  end
+
+  def duplicate
+    @dup_response = @response.duplicate
   end
 
   private

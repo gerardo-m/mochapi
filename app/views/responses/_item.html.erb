@@ -5,8 +5,28 @@
     <% else%>
       <%= "Response #{response.order_number.to_s}"%>
     <% end%>
-    <div class="stroke-red-600 hover:stroke-red-800">
-      <%= render 'components/delete_icon_button', model: response, size: "1.5rem" unless response.is_default?%>
+    <div class="relative" data-controller="toggle-dropdown">
+      <button class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700" data-action="toggle-dropdown#toggleDropdown" data-toggle-dropdown-target="button">
+        <%= render 'components/icons/three_dots_icon', size: "1rem" %>
+      </button>
+      <div class="dropdown-menu absolute right-0 w-48 bg-surface-light dark:bg-surface-dark rounded-md shadow-lg z-10 hidden" data-toggle-dropdown-target="dropdown">
+        <div class="py-1">
+          <%= button_to duplicate_response_path(response), method: :post,
+            form_class: "block text-sm text-surface-dark dark:text-surface-light hover:bg-surface-200 dark:hover:bg-surface-900 items-start",
+            class: "w-full h-full px-4 py-2 text-left",
+            data: {turbo_stream: true} do%>
+            <span>Duplicate</span>
+          <% end%>
+          <% unless response.is_default?%>
+            <%= button_to response, method: :delete, 
+              form_class: "block text-sm text-red-600 hover:bg-surface-200 dark:hover:bg-surface-900 items-start",
+              class: "w-full h-full px-4 py-2 text-left",
+              form: {onsubmit: "return confirm('Are you sure you want to delete this response');"} do%>
+              <span>Delete</span>
+            <% end%>
+          <% end%>
+        </div>
+      </div>
     </div>
   </summary>
   <div class="flex flex-col bg-surface-light dark:bg-surface-dark px-7 py-5 border border-gray-300 space-y-7">

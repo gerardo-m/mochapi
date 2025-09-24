@@ -9,28 +9,12 @@ class Expression < ApplicationRecord
 
   belongs_to :conditionable, polymorphic: true
 
-  # remember_value :form_type, :operand1_type
-  # remember_value :form_type, :operand1_val
-  # remember_value :form_type, :operand2_type
-  # remember_value :form_type, :operand2_val
   remember_value :operand1_form, :operand1_type
   remember_value :operand1_form, :operand1_val
   remember_value :operand2_form, :operand2_type
   remember_value :operand2_form, :operand2_val
 
   before_update :check_operands_changed
-
-  # def form_type
-  #   Constants::EXPRESSION_OPERANDS[operation]
-  # end
-
-  # def form_type_was
-  #   Constants::EXPRESSION_OPERANDS[operation_was]
-  # end
-
-  # def form_type_changed?
-  #   form_type != form_type_was
-  # end
 
   def is_met?(mochapi_request)
     return true if operation.blank?
@@ -72,6 +56,16 @@ class Expression < ApplicationRecord
       return conditionable.parent_conditionable
     end
     conditionable
+  end
+
+  def duplicate
+    new_expression = self.dup
+    self.expressions.each do |expression|
+      new_expression.expressions << expression.duplicate
+    end
+    # We still need to duplicate the operands if
+    # they are expressions
+    new_expression
   end
 
   private

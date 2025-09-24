@@ -25,4 +25,6 @@
 - ~~Fix curl command not taking into account the url preffix~~
 - ~~Fix tab not working in variable name, probably because of whitespace being ignored~~
 - ~~Fix operation in conditions not accepting blank value~~
-- Add functionality to duplicate endpoints
+- ~~Add functionality to duplicate endpoints~~
+- ~~Fix responses failing to delete when there are headers associated with it~~
+- Prepare release

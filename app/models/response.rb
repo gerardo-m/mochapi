@@ -2,7 +2,7 @@ class Response < ApplicationRecord
   delegated_type :responseable, types: %w[ PlainResponse ], dependent: :destroy
   belongs_to :endpoint
   has_one :expression, as: :conditionable, autosave: true, dependent: :destroy
-  has_many :headers
+  has_many :headers, dependent: :destroy
   # solve should return an object that could be sent to the render method
   delegate :solve, to: :responseable
   accepts_nested_attributes_for :responseable
@@ -33,5 +33,22 @@ class Response < ApplicationRecord
   def conditions_met?(mochapi_request)
     return expression.is_met?(mochapi_request) unless expression.nil?
     false
+  end
+
+  def duplicate
+    new_response = self.dup
+    new_response.responseable = self.responseable.dup
+    if self.expression.nil?
+      new_response.expression = Expression.new
+    else
+      new_response.expression = self.expression.duplicate
+    end
+    n_order_number = Response.where(endpoint_id: endpoint_id).maximum(:order_number) || self.order_number
+    new_response.order_number = n_order_number + 1
+    self.headers.each do |header|
+      new_response.headers << header.dup
+    end
+    new_response.save
+    new_response
   end
 end

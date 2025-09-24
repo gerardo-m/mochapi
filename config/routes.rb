@@ -12,6 +12,9 @@ Rails.application.routes.draw do
         get "variables"
       end
       resources :responses, shallow: true do
+        member do
+          post "duplicate"
+        end
         resources :expressions, shallow: true
         resources :headers, shallow: true
       end
