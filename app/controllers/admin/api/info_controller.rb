@@ -9,7 +9,9 @@ module Admin
           return render json: { error: 404, error_message: "Not found",
             message: "Project with space name #{params[:project]} not found" }, status: :not_found
         end
-        method = request.request_method
+        method = params[:method]
+        method = method.upcase if method.present?
+        method = Constants::SUPPORTED_METHODS.first if method.blank?
         endpoint, mochapi_request = match_endpoint(project, method, params[:apiurl])
         if endpoint.nil?
           return render json: { error: 404, error_message: "Not found",
