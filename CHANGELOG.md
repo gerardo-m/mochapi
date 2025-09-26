@@ -3,6 +3,29 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.6.0] - 2025-09-25
+
+### Added
+
+- Boolean type to variables.
+- IS_EQUAL and IS_NOT_EQUAL operations to conditions
+- Option to duplicate endpoints
+
+### Changed
+
+- All fields in the project form now autosave
+- All fields in the endpoint form now autosave, including responses
+and conditions
+- Status code field now have a separate box for the input
+- Admin info endpoint now accepts a method param.
+
+### Fixed
+
+- Fixed curl command not taking into account the preffix.
+- Fixed tab not working when editing variable names.
+- Fixed problem when changing operation to blank in conditions.
+- Fixed endpoints with headers not being able to be deleted.
+
 ## [0.5.0] - 2025-09-06
 
 ### Added
