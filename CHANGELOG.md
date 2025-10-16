@@ -3,6 +3,14 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.6.1] - 2025-10-16
+
+### Fixed
+
+- Fixed url matching not working correctly when the url contains exclamation marks.
+- Fixed response content not being displayed correctly when the content is too long.
+- Fixed path not being saved automatically.
+
 ## [0.6.0] - 2025-09-25
 
 ### Added

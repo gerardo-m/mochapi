@@ -15,7 +15,7 @@ module UrlMatcher
         path = endpoint.complete_path
         return if path.blank?
         template = Addressable::Template.new(endpoint.complete_path)
-        match = template.match(apiurl)
+        match = template.match(encode_url(apiurl))
         if match.present?
           mochapi_request = build_mochapi_request(match)
           return endpoint, mochapi_request
@@ -31,6 +31,17 @@ module UrlMatcher
       mochapi_request.query_parameters = request.query_parameters
       mochapi_request.request_parameters = request.request_parameters
       mochapi_request
+    end
+
+    private
+
+    def encode_url(url)
+      # This is needed becaues the encoding with CharacterClasses::PATH
+      # does not escape exclamation marks, and the matcher doesn't match
+      # if the url contains exclamation marks.
+      encoder = Addressable::URI::CharacterClasses::UNRESERVED + "\\:\\@\\/"
+      encoded_url = Addressable::URI.encode_component(url, encoder)
+      encoded_url
     end
   end
 end
